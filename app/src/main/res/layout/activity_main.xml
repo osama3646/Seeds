@@ -9,7 +9,14 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sdf" />
+    </FrameLayout>
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/chip_bottom_nav"
@@ -22,6 +29,8 @@
         app:cnb_orientationMode="horizontal"
         android:padding="5dp"
         app:cnb_radius="10dp"
-        app:cnb_unselectedColor="@color/SecondaryText" />
+        app:cnb_unselectedColor="@color/SecondaryText" >
+
+    </com.ismaeldivita.chipnavigation.ChipNavigationBar>
 
 </RelativeLayout>
