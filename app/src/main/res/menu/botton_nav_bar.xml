@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/store"
+        android:icon="@drawable/seeds"
+        android:title="@string/store"/>
+
+    <item
+        android:id="@+id/farmer"
+        android:icon="@drawable/agriculture"
+        android:title="@string/farmer"/>
+
+    <item
+        android:id="@+id/designer"
+        android:icon="@drawable/garden"
+        android:title="@string/designer"/>
+
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/user"
+        android:title="@string/account"/>
+
+</menu>
