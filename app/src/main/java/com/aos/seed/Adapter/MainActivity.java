@@ -2,6 +2,7 @@ package com.aos.seed.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.browser.trusted.TokenStore;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         chip_bottom_nav = findViewById(R.id.chip_bottom_nav);
-
+        navSelected();
     }
 
 private void navSelected(){
