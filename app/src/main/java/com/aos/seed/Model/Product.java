@@ -8,15 +8,13 @@ public class Product {
     String category;
     String image[];
     String storeId;
-    int viewPort;
 
-    public Product(String name, String description, float price, int stock, String category, int viewPort) {
+    public Product(String name, String description, float price, int stock, String category) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
         this.category = category;
-        this.viewPort = viewPort;
     }
 
     public String getName() {
@@ -47,7 +45,4 @@ public class Product {
         return storeId;
     }
 
-    public int getViewPort() {
-        return viewPort;
-    }
 }

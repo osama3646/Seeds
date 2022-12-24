@@ -6,9 +6,16 @@
     android:orientation="vertical"
     tools:context=".Ui.Store">
 
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Layout Case Change" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/storeRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

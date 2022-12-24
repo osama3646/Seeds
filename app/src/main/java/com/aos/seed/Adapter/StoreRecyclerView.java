@@ -74,7 +74,8 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemViewType(int position) {
-        return products.get(position).getViewPort();
+        shared = context.getSharedPreferences("storeRecyclerLayout",Context.MODE_PRIVATE);
+        return shared.getInt("case",1);
     }
 
     @Override
