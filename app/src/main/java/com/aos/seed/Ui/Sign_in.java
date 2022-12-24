@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import com.aos.seed.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +18,7 @@ import com.aos.seed.R;
  * create an instance of this fragment.
  */
 public class Sign_in extends Fragment {
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,6 +58,7 @@ public class Sign_in extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
