@@ -3,23 +3,27 @@ package com.aos.seed.Adapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.aos.seed.Model.Prodect;
+import com.aos.seed.Model.Product;
+import com.aos.seed.R;
 
 import java.util.List;
 
 public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Prodect> prodects;
+    private List<Product> products;
     private Context context;
     private SharedPreferences shared;
 
-    public StoreRecyclerView(List<Prodect> prodects, Context context) {
-        this.prodects = prodects;
+    public StoreRecyclerView(List<Product> products, Context context) {
+        this.products = products;
         this.context = context;
     }
 
@@ -28,16 +32,81 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        return null;
+        switch (viewType){
+            case 1:{
+                View view1 = inflater.inflate(R.layout.product_card_model_1,parent,false);
+                viewHolder = new viewModel1(view1);
+                break;
+            }
+            case 2:{
+                View view1 = inflater.inflate(R.layout.product_card_model_2,parent,false);
+                viewHolder = new viewModel2(view1);
+                break;
+            }
+        }
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        final Product product = products.get(holder.getAdapterPosition());
+        switch (holder.getItemViewType()){
+            case 1:{
+                viewModel1 model = (viewModel1) holder;
+                model.productName.setText(product.getName());
+                model.description.setText(product.getDescription());
+                model.stock.setText(product.getStock()+"");
+                model.category.setText(product.getCategory());
+                model.price.setText(product.getPrice()+"");
+                break;
+            }
+            case 2:{
+                viewModel2 model = (viewModel2) holder;
+                model.productName.setText(product.getName());
+                model.description.setText(product.getDescription());
+                model.stock.setText(product.getStock()+"");
+                model.category.setText(product.getCategory());
+                model.price.setText(product.getPrice()+"");
+                break;
+            }
+        }
+    }
 
+    @Override
+    public int getItemViewType(int position) {
+        return products.get(position).getViewPort();
     }
 
     @Override
     public int getItemCount() {
-        return prodects.size();
+        return products.size();
+    }
+
+    private class viewModel1 extends RecyclerView.ViewHolder {
+        TextView productName,description, stock, category, price;
+        ImageView productImage;
+        public viewModel1(View view1) {
+            super(view1);
+            productName = view1.findViewById(R.id.productName);
+            description = view1.findViewById(R.id.description);
+            stock = view1.findViewById(R.id.stock);
+            category = view1.findViewById(R.id.category);
+            price = view1.findViewById(R.id.price);
+            productImage = view1.findViewById(R.id.productImage);
+        }
+    }
+
+    private class viewModel2 extends RecyclerView.ViewHolder {
+        TextView productName,description, stock, category, price;
+        ImageView productImage;
+        public viewModel2(View view2) {
+            super(view2);
+            productName = view2.findViewById(R.id.productName);
+            description = view2.findViewById(R.id.description);
+            stock = view2.findViewById(R.id.stock);
+            category = view2.findViewById(R.id.category);
+            price = view2.findViewById(R.id.price);
+            productImage = view2.findViewById(R.id.productImage);
+        }
     }
 }
