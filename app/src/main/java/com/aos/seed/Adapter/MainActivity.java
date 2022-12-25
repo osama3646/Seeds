@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.trusted.TokenStore;
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import com.aos.seed.R;
@@ -13,6 +14,7 @@ import com.aos.seed.Ui.Designer;
 import com.aos.seed.Ui.Farmer;
 import com.aos.seed.Ui.Sign_up;
 import com.aos.seed.Ui.Store;
+import com.aos.seed.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     ChipNavigationBar chip_bottom_nav;
     private FirebaseAuth mAuth;
+    ActivityMainBinding binding;
 
 
     @Override
