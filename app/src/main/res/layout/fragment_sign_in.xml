@@ -27,7 +27,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/Sign in"
+            android:id="@+id/Sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign in" />

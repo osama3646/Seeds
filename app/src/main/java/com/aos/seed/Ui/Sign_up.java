@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.aos.seed.Model.Customer;
 import com.aos.seed.R;
+
+import org.checkerframework.checker.units.qual.C;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +63,13 @@ public class Sign_up extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sign__up, container, false);
+        View root = inflater.inflate(R.layout.fragment_sign__up, container, false);
+
+        Customer customer = new Customer("osama@gmail.com","123Sss548");
+        customer.setFirstName("Osama");
+        customer.setLastName("Majrashi");
+        customer.signUp();
+
+        return root;
     }
 }

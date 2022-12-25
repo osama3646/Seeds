@@ -11,6 +11,7 @@ import com.aos.seed.R;
 import com.aos.seed.Ui.Account;
 import com.aos.seed.Ui.Designer;
 import com.aos.seed.Ui.Farmer;
+import com.aos.seed.Ui.Sign_up;
 import com.aos.seed.Ui.Store;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -73,7 +74,7 @@ private void navSelected(){
                         fragment = new Designer();
                         break;
                     case R.id.account:
-                        fragment = new Account();
+                        fragment = new Sign_up();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
