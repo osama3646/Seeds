@@ -65,9 +65,9 @@ public class Sign_up extends Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_sign__up, container, false);
 
-        Customer customer = new Customer("osama@gmail.com","123Sss548");
-        customer.setFirstName("Osama");
-        customer.setLastName("Majrashi");
+        Customer customer = new Customer("saad@gmail.com","123Sss548");
+        customer.setFirstName("saad");
+        customer.setLastName("GL");
         customer.signUp();
 
         return root;
