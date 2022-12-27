@@ -23,7 +23,7 @@
         app:cnb_orientationMode="horizontal"
         android:padding="5dp"
         app:cnb_radius="10dp"
-        app:cnb_unselectedColor="@color/SecondaryText" >
+        app:cnb_unselectedColor="@color/secondary" >
 
     </com.ismaeldivita.chipnavigation.ChipNavigationBar>
 

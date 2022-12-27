@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/store"
         android:icon="@drawable/seeds"
-        android:title="@string/store"/>
+        android:title="@string/store"
+        app:cnb_iconColor="@color/primary"/>
 
     <item
         android:id="@+id/farmer"
         android:icon="@drawable/agriculture"
-        android:title="@string/farmer"/>
+        android:title="@string/farmer"
+        app:cnb_iconColor="@color/primary"/>
 
     <item
         android:id="@+id/designer"
         android:icon="@drawable/garden"
-        android:title="@string/designer"/>
+        android:title="@string/designer"
+        app:cnb_iconColor="@color/primary"/>
 
     <item
         android:id="@+id/account"
         android:icon="@drawable/user"
-        android:title="@string/account"/>
+        android:title="@string/account"
+        app:cnb_iconColor="@color/primary"/>
 
 </menu>
