@@ -7,4 +7,5 @@
     <color name="secondaryText">#8c8c8c</color>
     <color name="primary">#498553</color>
     <color name="secondary">#a6d0ad</color>
+    <color name="productCardBg">#e9f3ed</color>
 </resources>
