@@ -5,26 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+    android:orientation="vertical"
     tools:context=".Ui.Sign_up">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="112dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left"
+            android:src="@drawable/logo_seed" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="171dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/app_name"
+            android:textSize="@dimen/TextTitle" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="391dp"
         android:layout_height="496dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="81dp"
-            android:layout_height="61dp"
-            android:layout_weight="1"
-            android:src="@drawable/logo_seed" />
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="First Name:" />
+            android:text="@string/first_name" />
 
         <EditText
             android:id="@+id/editTextTextPersonName"
@@ -32,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="First Name"
+            android:hint="@string/first_name"
             android:inputType="textPersonName" />
 
         <TextView
@@ -40,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Last Name:" />
+            android:text="@string/last_name" />
 
         <EditText
             android:id="@+id/editTextTextPersonName5"
@@ -48,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Last Name"
+            android:hint="@string/last_name"
             android:inputType="textPersonName" />
 
         <TextView
@@ -56,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Password:" />
+            android:text="@string/password" />
 
         <EditText
             android:id="@+id/editTextTextPersonName2"
@@ -64,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPersonName" />
 
         <TextView
@@ -72,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="RePassword:" />
+            android:text="@string/repassword" />
 
         <EditText
             android:id="@+id/editTextTextPersonName3"
@@ -80,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="RePassword"
+            android:hint="@string/repassword"
             android:inputType="textPersonName" />
 
         <TextView
@@ -88,7 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Email:" />
+            android:text="@string/email" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
@@ -96,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress" />
 
         <TextView
@@ -104,16 +123,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sigh In" />
+            android:text="@string/sign_in" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
             android:layout_marginLeft="45dp"
+            android:layout_marginRight="40dp"
             android:layout_weight="1"
-            android:text="Register" />
+            android:text="@string/sigh_up" />
 
     </LinearLayout>
 
