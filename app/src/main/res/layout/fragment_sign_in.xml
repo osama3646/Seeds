@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="sans-serif"
-            android:text="اهلا بك"
+            android:text=";هلا بك"
             android:textSize="80dp" />
         <TextView
             android:layout_width="wrap_content"
