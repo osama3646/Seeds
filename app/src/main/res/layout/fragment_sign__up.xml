@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    tools:context=".Ui.Sign_up">
+    tools:context=".Ui.Sign_up"
+    android:layout_margin="10dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,101 +40,73 @@
         android:layout_height="496dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/first_name" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstnameid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/first_name"
-            android:inputType="textPersonName" />
 
-        <TextView
-            android:id="@+id/textView3"
+            android:hint="@string/first_name" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastnameid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/last_name" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName5"
+            android:hint="@string/last_name" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/last_name"
-            android:inputType="textPersonName" />
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_baseline_lock">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/password" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextTextPersonName2"
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/password"
-            android:inputType="textPersonName" />
+            app:endIconMode="password_toggle"
+            app:startIconDrawable="@drawable/ic_baseline_lock">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/repassword" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/repassword"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextTextPersonName3"
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/repassword"
-            android:inputType="textPersonName" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/email" />
-
-        <EditText
-            android:id="@+id/editTextTextEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/email" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="@string/sign_in" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="40dp"
-            android:layout_weight="1"
-            android:text="@string/sigh_up" />
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="@string/sign_in"
+            android:textSize="15dp"
+            app:cornerRadius="10dp" />
 
     </LinearLayout>
 
