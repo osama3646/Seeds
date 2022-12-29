@@ -51,10 +51,14 @@
                 android:layout_height="wrap_content"
                 android:text="$3.64"
                 android:textColor="@color/primaryText"
-                android:textSize="@dimen/TextTitle"/>
+                android:textSize="@dimen/TextTitle" />
 
         </LinearLayout>
 
+
+
     </LinearLayout>
 
+
 </androidx.cardview.widget.CardView>
+
