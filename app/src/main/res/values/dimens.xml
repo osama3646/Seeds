@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="TextTitle">20sp</dimen>
-    <dimen name="Button">16</dimen>
+    <dimen name="text">16sp</dimen>
 </resources>

@@ -76,7 +76,7 @@ public class Store extends Fragment {
     }
 
     private void linearLayout() {
-        storeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        storeRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         storeRecyclerView.setItemAnimator(new DefaultItemAnimator());
         for (int i=0;i<5;i++){
             Product product = new Product("Flower", lorem, 3.50f, 6, "seed");
