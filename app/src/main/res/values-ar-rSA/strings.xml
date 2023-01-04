@@ -13,5 +13,5 @@
     <string name="first_name">الأسم الأول</string>
     <string name="last_name">الأسم الأخير</string>
     <string name="sign_in">تسجيل الدخول</string>
-    <string name="sigh_up">التسجيل</string>
+    <string name="sign_up">التسجيل</string>
 </resources>
