@@ -8,9 +8,11 @@
     android:orientation="vertical"
 >
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/productCardBg"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -20,67 +22,43 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/productCardBg">
 
                 <ImageView
                     android:id="@+id/productImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/border"
-                    android:scaleType="center"
-                    android:src="@drawable/background" />
+                    android:src="@drawable/test_product3" />
+
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:text="اسم المنتج"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/TextTitle" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Product Name"
-                    android:textColor="@color/primary"
-                    android:textSize="@dimen/TextTitle"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$3.64"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/TextTitle" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$3.64"
-                    android:textColor="@color/primaryText"
-                    android:textSize="@dimen/TextTitle"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="end|center"
-                >
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_margin="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:src="@drawable/img_3"
-                    />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_margin="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:src="@drawable/img_1" />
-            </LinearLayout>
         </LinearLayout>
+
+
+
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
