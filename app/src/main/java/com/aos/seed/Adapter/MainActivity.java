@@ -10,7 +10,7 @@ import com.aos.seed.R;
 import com.aos.seed.Ui.Designer;
 import com.aos.seed.Ui.Farmer;
 import com.aos.seed.Ui.Sign_up;
-import com.aos.seed.Adapter.Ui.Store;
+import com.aos.seed.Ui.Store;
 import com.aos.seed.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
