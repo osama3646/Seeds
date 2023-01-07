@@ -1,4 +1,4 @@
-package com.aos.seed.Ui;
+package com.aos.seed.Adapter.Ui;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -76,8 +76,8 @@ public class Store extends Fragment {
     }
 
     private void linearLayout() {
-        storeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        storeRecyclerView.setItemAnimator(new DefaultItemAnimator());
+//        storeRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        storeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));        storeRecyclerView.setItemAnimator(new DefaultItemAnimator());
         for (int i=0;i<5;i++){
             Product product = new Product("Flower", lorem, 3.50f, 6, "seed");
             dataHolder.add(product);

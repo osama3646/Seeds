@@ -1,4 +1,4 @@
-package com.aos.seed.Ui;
+package com.aos.seed.Adapter.Ui;
 
 import android.os.Bundle;
 
@@ -10,8 +10,6 @@ import android.view.ViewGroup;
 
 import com.aos.seed.Model.Customer;
 import com.aos.seed.R;
-
-import org.checkerframework.checker.units.qual.C;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,4 +1,4 @@
-package com.aos.seed.Ui;
+package com.aos.seed.Adapter.Ui;
 
 import android.os.Bundle;
 

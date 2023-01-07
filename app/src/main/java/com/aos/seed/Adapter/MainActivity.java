@@ -2,20 +2,16 @@ package com.aos.seed.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.browser.trusted.TokenStore;
 import androidx.fragment.app.Fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 import com.aos.seed.R;
-import com.aos.seed.Ui.Account;
-import com.aos.seed.Ui.Designer;
-import com.aos.seed.Ui.Farmer;
-import com.aos.seed.Ui.Sign_up;
-import com.aos.seed.Ui.Store;
+import com.aos.seed.Adapter.Ui.Designer;
+import com.aos.seed.Adapter.Ui.Farmer;
+import com.aos.seed.Adapter.Ui.Sign_up;
+import com.aos.seed.Adapter.Ui.Store;
 import com.aos.seed.databinding.ActivityMainBinding;
-import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
