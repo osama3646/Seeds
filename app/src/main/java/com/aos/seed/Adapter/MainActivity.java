@@ -7,9 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import com.aos.seed.R;
-import com.aos.seed.Adapter.Ui.Designer;
-import com.aos.seed.Adapter.Ui.Farmer;
-import com.aos.seed.Adapter.Ui.Sign_up;
+import com.aos.seed.Ui.Designer;
+import com.aos.seed.Ui.Farmer;
+import com.aos.seed.Ui.Sign_up;
 import com.aos.seed.Adapter.Ui.Store;
 import com.aos.seed.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;

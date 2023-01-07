@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Adapter.Ui.Account" >
+    tools:context=".Ui.Account" >
     <TextView
         android:drawableStart="@drawable/ic_back"
         android:layout_width="match_parent"
