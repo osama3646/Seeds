@@ -14,4 +14,5 @@
     <string name="last_name">الأسم الأخير</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="sign_up">التسجيل</string>
+    <string name="app_name_Ref">Seed</string>
 </resources>
