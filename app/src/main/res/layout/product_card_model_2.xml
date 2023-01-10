@@ -28,7 +28,7 @@
                 android:layout_height="24dp"
                 android:layout_margin="16dp"
                 android:layout_marginBottom="16dp"
-                android:src="@drawable/img_3"
+                android:src="@drawable/like"
                 android:layout_gravity="end"
                 />
         </androidx.cardview.widget.CardView>

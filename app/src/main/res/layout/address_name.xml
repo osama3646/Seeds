@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="139dp"
+        android:background="@drawable/border_green"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_margin="5dp"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_loc"
+                />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Address Name"
+                android:textStyle="bold"
+                android:textSize="@dimen/TextTitle"
+                android:textColor="@color/primary"
+                android:layout_marginStart="16dp"
+                />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_done" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="bottom|end"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Region:"
+                        android:textColor="#444444"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="City:"
+                        android:textColor="#444444"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="District:"
+                        android:textColor="#444444"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginStart="13dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Jazan"
+                        android:textSize="14dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Sabya"
+                        android:textSize="14dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:text="Khalidiya"
+                        android:textSize="14dp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="24dp"
+                android:src="@drawable/edit"
+                />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="24dp"
+            android:src="@drawable/delete"
+            android:layout_marginStart="16dp"
+            />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
