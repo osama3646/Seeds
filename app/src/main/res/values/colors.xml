@@ -3,10 +3,11 @@
     <color name="test">#333333</color>
     <color name="background">#f4f4f4</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="primaryText">#333333</color>
-    <color name="secondaryText">#8c8c8c</color>
-    <color name="primary">#498553</color>
-    <color name="secondary">#a6d0ad</color>
+    <color name="primaryText">#444444</color>
+    <color name="secondaryText">#B9B9B9</color>
+    <color name="primary">#319F5F</color>
+    <color name="secondary">#E8FAEF</color>
     <color name="productCardBg">#e9f3ed</color>
     <color name="backdounProfile">#FCFCFC</color>
+    <color name="ErrorColor">#e81123</color>
 </resources>
