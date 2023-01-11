@@ -8,15 +8,7 @@
     android:orientation="vertical"
     tools:context=".Ui.Store">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,6 +46,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Layout Case Change" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Trending"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/TextTitle"
+        android:textStyle="bold" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -63,15 +65,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="Trending"
-                android:textColor="@color/primary"
-                android:textSize="@dimen/TextTitle"
-                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
