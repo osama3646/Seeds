@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -16,10 +17,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.aos.seed.Adapter.StoreRecyclerView;
 import com.aos.seed.Model.Product;
 import com.aos.seed.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,16 +39,18 @@ public class Store extends Fragment {
     SharedPreferences shared;
     int layoutCase;
     String lorem;
-    Button lcc;
+    ImageView layoutState;
+    FirebaseFirestore db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_store, container, false);
 
         lorem = "Lorem.";
-//        lcc = root.findViewById(R.id.button);
+        layoutState = root.findViewById(R.id.layoutState);
         storeRecyclerView = root.findViewById(R.id.storeRecyclerView);
         dataHolder = new ArrayList<>();
+        db = FirebaseFirestore.getInstance();
         shared = getContext().getSharedPreferences("storeRecyclerLayout", Context.MODE_PRIVATE);
         if (shared.contains("case")){
             layoutCase = shared.getInt("case",1);
@@ -58,19 +67,19 @@ public class Store extends Fragment {
             gridLayout();
         }
 
-//        lcc.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                SharedPreferences.Editor editor = shared.edit();
-//                if (layoutCase == 1){
-//                    editor.putInt("case", 2);
-//                }else {
-//                    editor.putInt("case", 1);
-//                }
-//                editor.commit();
-//                refresh();
-//            }
-//        });
+        layoutState.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = shared.edit();
+                if (layoutCase == 1){
+                    editor.putInt("case", 2);
+                }else {
+                    editor.putInt("case", 1);
+                }
+                editor.commit();
+                refresh();
+            }
+        });
 
         return root;
     }
@@ -79,23 +88,41 @@ public class Store extends Fragment {
     private void linearLayout() {
         storeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         storeRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        for (int i=0;i<5;i++){
-            Product product = new Product("Flower", lorem, 3.50f, 6, "seed");
-            dataHolder.add(product);
-        }
-        storeAdapter = new StoreRecyclerView(dataHolder, getContext());
-        storeRecyclerView.setAdapter(storeAdapter);
+        db.collection("Products").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()){
+                    for (QueryDocumentSnapshot document : task.getResult()){
+                        Product product = new Product(document.get("name").toString(),document.get("description").toString(),
+                                Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()),
+                                document.get("category").toString());
+                        dataHolder.add(product);
+                    }
+                    storeAdapter = new StoreRecyclerView(dataHolder, getContext());
+                    storeRecyclerView.setAdapter(storeAdapter);
+                }
+            }
+        });
     }
 
     private void gridLayout() {
         storeRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         storeRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        for (int i=0;i<5;i++){
-            Product product = new Product("Flower", lorem, 3.50f, 6, "seed");
-            dataHolder.add(product);
-        }
-        storeAdapter = new StoreRecyclerView(dataHolder, getContext());
-        storeRecyclerView.setAdapter(storeAdapter);
+        db.collection("Products").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()){
+                    for (QueryDocumentSnapshot document : task.getResult()){
+                        Product product = new Product(document.get("name").toString(),document.get("description").toString(),
+                                Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()),
+                                document.get("category").toString());
+                        dataHolder.add(product);
+                    }
+                    storeAdapter = new StoreRecyclerView(dataHolder, getContext());
+                    storeRecyclerView.setAdapter(storeAdapter);
+                }
+            }
+        });
     }
 
     private void refresh(){

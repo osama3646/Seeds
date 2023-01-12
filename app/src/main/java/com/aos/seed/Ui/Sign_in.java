@@ -11,21 +11,33 @@ import android.view.ViewGroup;
 
 import com.aos.seed.Model.Customer;
 import com.aos.seed.R;
+import com.aos.seed.databinding.FragmentSignInBinding;
 
 
 public class Sign_in extends Fragment {
 
-
+    FragmentSignInBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_sign__up, container, false);
 
-        Customer customer = new Customer("saad@gmail.com","123Sss548");
 
-        customer.signIn();
 
-        return root;
+        binding = FragmentSignInBinding.inflate(inflater,container,false);
+
+        binding.signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Customer customer = new Customer("saad@gmail.com","123Sss548");
+
+                customer.signIn();
+
+            }
+        });
+
+
+
+        return binding.getRoot();
     }
 }

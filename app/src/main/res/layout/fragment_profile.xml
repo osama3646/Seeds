@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Ui.Account" >
+    tools:context=".Ui.Profile" >
     <TextView
         android:drawableStart="@drawable/ic_back"
         android:layout_width="match_parent"
@@ -87,7 +87,7 @@
         android:layout_margin="16dp"
         >
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signIn"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Save"

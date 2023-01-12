@@ -54,20 +54,20 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
         switch (holder.getItemViewType()){
             case 1:{
                 viewModel1 model = (viewModel1) holder;
-//                model.productName.setText(product.getName());
+                model.productName.setText(product.getName());
 //                model.description.setText(product.getDescription());
 //                model.stock.setText(product.getStock()+"");
 //                model.category.setText(product.getCategory());
-//                model.price.setText(product.getPrice()+"");
+                model.price.setText(product.getPrice()+"");
                 break;
             }
             case 2:{
                 viewModel2 model = (viewModel2) holder;
-//                model.productName.setText(product.getName());
+                model.productName.setText(product.getName());
 //                model.description.setText(product.getDescription());
 //                model.stock.setText(product.getStock()+"");
 //                model.category.setText(product.getCategory());
-//                model.price.setText(product.getPrice()+"");
+                model.price.setText(product.getPrice()+"");
                 break;
             }
         }
@@ -85,15 +85,12 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     private class viewModel1 extends RecyclerView.ViewHolder {
-        TextView productName,description, stock, category, price;
-        ImageView productImage;
+        TextView productName, price;
+//        ImageView productImage;
         public viewModel1(View view1) {
             super(view1);
-//            productName = view1.findViewById(R.id.productName);
-//            description = view1.findViewById(R.id.description);
-//            stock = view1.findViewById(R.id.stock);
-//            category = view1.findViewById(R.id.category);
-//            price = view1.findViewById(R.id.price);
+            productName = view1.findViewById(R.id.productName);
+            price = view1.findViewById(R.id.price);
 //            productImage = view1.findViewById(R.id.productImage);
         }
     }
@@ -103,11 +100,11 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
         ImageView productImage;
         public viewModel2(View view2) {
             super(view2);
-//            productName = view2.findViewById(R.id.productName);
+            productName = view2.findViewById(R.id.productName);
 //            description = view2.findViewById(R.id.description);
 //            stock = view2.findViewById(R.id.stock);
 //            category = view2.findViewById(R.id.category);
-//            price = view2.findViewById(R.id.price);
+            price = view2.findViewById(R.id.price);
 //            productImage = view2.findViewById(R.id.productImage);
         }
     }
