@@ -36,7 +36,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
-            android:src="@drawable/img"
+            android:src="@drawable/img231"
             app:tint="@color/primary" />
 
         <ImageView
