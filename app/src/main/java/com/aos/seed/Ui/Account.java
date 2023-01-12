@@ -14,18 +14,25 @@ import com.aos.seed.R;
 
 public class Account extends Fragment {
 
-    TextView productDetail;
+    TextView productDetail, addProduct;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_account, container, false);
 
         productDetail = root.findViewById(R.id.productDetail1);
+        addProduct = root.findViewById(R.id.addProduct);
 
         productDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.frameLayout, new product_detail()).commit();
+            }
+        });
+        addProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new AddProduct()).commit();
             }
         });
 
