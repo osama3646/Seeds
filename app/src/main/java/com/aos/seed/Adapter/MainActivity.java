@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 
 import com.aos.seed.R;
+import com.aos.seed.Ui.Account;
 import com.aos.seed.Ui.Designer;
 import com.aos.seed.Ui.Farmer;
 import com.aos.seed.Ui.Sign_up;
@@ -72,7 +73,7 @@ private void navSelected(){
                         fragment = new Designer();
                         break;
                     case R.id.account:
-                        fragment = new Sign_up();
+                        fragment = new Account();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragment).commit();
