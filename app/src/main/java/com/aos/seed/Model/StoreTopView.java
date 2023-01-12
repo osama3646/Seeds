@@ -16,4 +16,5 @@ public class StoreTopView {
     public int getViewType() {
         return viewType;
     }
+
 }

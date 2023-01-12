@@ -45,6 +45,7 @@ public class StoreTopRecyclerView extends RecyclerView.Adapter<RecyclerView.View
         return viewHolder;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final StoreTopView item = items.get(holder.getAdapterPosition());

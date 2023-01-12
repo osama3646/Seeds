@@ -47,6 +47,7 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
         return viewHolder;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final Product product = products.get(holder.getAdapterPosition());

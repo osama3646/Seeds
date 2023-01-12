@@ -75,6 +75,7 @@ public class Store extends Fragment {
         return root;
     }
 
+
     private void linearLayout() {
         storeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         storeRecyclerView.setItemAnimator(new DefaultItemAnimator());

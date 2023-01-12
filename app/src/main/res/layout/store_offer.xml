@@ -13,4 +13,5 @@
         android:src="@drawable/img_2"
         android:scaleType="center"/>
 
+
 </androidx.cardview.widget.CardView>
