@@ -39,7 +39,7 @@ public class Store extends Fragment {
         View root = inflater.inflate(R.layout.fragment_store, container, false);
 
         lorem = "Lorem.";
-        lcc = root.findViewById(R.id.button);
+//        lcc = root.findViewById(R.id.button);
         storeRecyclerView = root.findViewById(R.id.storeRecyclerView);
         dataHolder = new ArrayList<>();
         shared = getContext().getSharedPreferences("storeRecyclerLayout", Context.MODE_PRIVATE);
@@ -58,19 +58,19 @@ public class Store extends Fragment {
             gridLayout();
         }
 
-        lcc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences.Editor editor = shared.edit();
-                if (layoutCase == 1){
-                    editor.putInt("case", 2);
-                }else {
-                    editor.putInt("case", 1);
-                }
-                editor.commit();
-                refresh();
-            }
-        });
+//        lcc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                SharedPreferences.Editor editor = shared.edit();
+//                if (layoutCase == 1){
+//                    editor.putInt("case", 2);
+//                }else {
+//                    editor.putInt("case", 1);
+//                }
+//                editor.commit();
+//                refresh();
+//            }
+//        });
 
         return root;
     }

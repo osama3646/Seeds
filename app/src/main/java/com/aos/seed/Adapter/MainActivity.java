@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     ChipNavigationBar chip_bottom_nav;
     private FirebaseAuth mAuth;
-    ActivityMainBinding binding;
 
 
     @Override
