@@ -45,4 +45,11 @@ public class Product {
         return storeId;
     }
 
+    public void setImage(String[] image) {
+        this.image = image;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
+    }
 }

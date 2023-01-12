@@ -11,24 +11,39 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.aos.seed.R;
+import com.aos.seed.databinding.FragmentAccountBinding;
 
 public class Account extends Fragment {
 
-    TextView productDetail;
+    FragmentAccountBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_account, container, false);
 
-        productDetail = root.findViewById(R.id.productDetail1);
+          binding = FragmentAccountBinding.inflate(inflater,container,false);
 
-        productDetail.setOnClickListener(new View.OnClickListener() {
+
+        binding.productDetail1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.frameLayout, new product_detail()).commit();
             }
         });
+        binding.addProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new AddProduct()).commit();
+            }
+        });
 
-        return root;
+        binding.signIp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Sign_in()).commit();
+
+            }
+        });
+
+        return binding.getRoot();
     }
 }
