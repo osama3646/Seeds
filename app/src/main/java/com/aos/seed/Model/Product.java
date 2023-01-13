@@ -1,6 +1,7 @@
 package com.aos.seed.Model;
 
 public class Product {
+    String productId;
     String name;
     String description;
     float price;
@@ -15,6 +16,10 @@ public class Product {
         this.price = price;
         this.stock = stock;
         this.category = category;
+    }
+
+    public String getProductId() {
+        return productId;
     }
 
     public String getName() {
@@ -51,5 +56,9 @@ public class Product {
 
     public void setStoreId(String storeId) {
         this.storeId = storeId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 }

@@ -70,6 +70,7 @@
                 >
 
                 <ImageView
+                    android:id="@+id/addToCart"
                     android:layout_width="19dp"
                     android:layout_height="24dp"
                     android:layout_margin="16dp"

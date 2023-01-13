@@ -96,6 +96,7 @@ public class Store extends Fragment {
                         Product product = new Product(document.get("name").toString(),document.get("description").toString(),
                                 Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()),
                                 document.get("category").toString());
+                        product.setProductId(document.getId());
                         dataHolder.add(product);
                     }
                     storeAdapter = new StoreRecyclerView(dataHolder, getContext());
@@ -116,6 +117,7 @@ public class Store extends Fragment {
                         Product product = new Product(document.get("name").toString(),document.get("description").toString(),
                                 Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()),
                                 document.get("category").toString());
+                        product.setProductId(document.getId());
                         dataHolder.add(product);
                     }
                     storeAdapter = new StoreRecyclerView(dataHolder, getContext());

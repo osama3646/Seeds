@@ -319,7 +319,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="10dp"
                             android:layout_weight="1"
-                            android:src="@drawable/img1231"
+                            android:src="@drawable/img231"
                        />
                     </LinearLayout>
                 </LinearLayout>
@@ -436,7 +436,7 @@
                                 android:id="@+id/imageView9"
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
-                                android:src="@drawable/GruopV" />
+                                android:src="@drawable/gruop_v" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

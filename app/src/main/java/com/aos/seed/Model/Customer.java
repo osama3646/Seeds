@@ -63,10 +63,12 @@ public class Customer {
     public void signIn(){
 
         mAuth = FirebaseAuth.getInstance();
+        Log.w(TAG, "signInWithEmail:mAuth");
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);

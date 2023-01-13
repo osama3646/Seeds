@@ -11,9 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aos.seed.Model.Cart;
 import com.aos.seed.Model.Product;
 import com.aos.seed.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.type.DateTime;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -68,6 +74,18 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
 //                model.stock.setText(product.getStock()+"");
 //                model.category.setText(product.getCategory());
                 model.price.setText(product.getPrice()+"");
+                model.addToCart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FirebaseAuth myAuth = FirebaseAuth.getInstance();
+                        FirebaseUser user = myAuth.getCurrentUser();
+
+                        Calendar c = Calendar.getInstance();
+                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        Cart cart = new Cart(product.getProductId(), user.getUid(),1);
+                        cart.addToDatabase();
+                    }
+                });
                 break;
             }
         }
@@ -97,7 +115,7 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     private class viewModel2 extends RecyclerView.ViewHolder {
         TextView productName,description, stock, category, price;
-        ImageView productImage;
+        ImageView productImage, addToCart;
         public viewModel2(View view2) {
             super(view2);
             productName = view2.findViewById(R.id.productName);
@@ -106,6 +124,7 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
 //            category = view2.findViewById(R.id.category);
             price = view2.findViewById(R.id.price);
 //            productImage = view2.findViewById(R.id.productImage);
+            addToCart = view2.findViewById(R.id.addToCart);
         }
     }
 }
