@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.aos.seed.Model.Customer;
 import com.aos.seed.R;
 import com.aos.seed.databinding.FragmentAccountBinding;
 
@@ -40,6 +41,16 @@ public class Account extends Fragment {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Sign_in()).commit();
+
+            }
+        });
+
+        binding.signIp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Customer customer = new Customer("","");
+                customer.signOut();
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
 
             }
         });

@@ -23,7 +23,7 @@ import java.util.concurrent.Executor;
 
 public class Customer {
 
-    private String email, password, firstName, lastName;
+    private String email, password, Username, Mobile;
     private FirebaseAuth mAuth;
 
     public Customer(String email, String password) {
@@ -31,12 +31,12 @@ public class Customer {
         this.password = password;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUsername(String firstName) {
+        this.Username = Username;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setMobile(String lastName) {
+        this.Mobile = Mobile;
     }
 
     public void signUp(){
@@ -51,8 +51,8 @@ public class Customer {
                     FirebaseUser users = mAuth.getCurrentUser();
 //                    Customer customer = new Customer(email, password);
                     Map<String, Object> user = new HashMap<>();
-                    user.put("first", firstName);
-                    user.put("last", lastName);
+                    user.put("first", Username);
+                    user.put("last", Mobile);
                     user.put("email", email);
                     user.put("password", password);
                     db.collection("Customer").document(users.getUid()).set(user);
@@ -64,6 +64,7 @@ public class Customer {
 
         mAuth = FirebaseAuth.getInstance();
         Log.w(TAG, "signInWithEmail:mAuth");
+        signOut();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -81,8 +82,9 @@ public class Customer {
                     }
                 });
 
-
-
+    }
+    public void signOut(){
+        FirebaseAuth.getInstance().signOut();
 
     }
 }
