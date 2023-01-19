@@ -37,6 +37,13 @@ public class Account extends Fragment {
             }
         });
 
+        binding.Profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Profile()).commit();
+            }
+        });
+
         binding.signIp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +52,16 @@ public class Account extends Fragment {
             }
         });
 
-        binding.signIp.setOnClickListener(new View.OnClickListener() {
+
+        binding.signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Sign_up()).commit();
+
+            }
+        });
+
+        binding.signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Customer customer = new Customer("","");

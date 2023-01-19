@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/productDetail1"
+            android:id="@+id/Account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -35,7 +35,7 @@
 
 
             <TextView
-                android:id="@+id/addProduct"
+                android:id="@+id/Profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Profile"
@@ -44,6 +44,26 @@
                 android:layout_margin="8dp"
                 android:drawableEnd="@drawable/ic_next"
                 />
+
+            <TextView
+                android:id="@+id/productDetail1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:drawableEnd="@drawable/ic_next"
+                android:text="productDetail"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/addProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:drawableEnd="@drawable/ic_next"
+                android:text="addProduct"
+                android:textColor="#000000"
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/signIp"
