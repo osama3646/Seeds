@@ -31,31 +31,38 @@ public class Sign_up extends Fragment {
             @Override
             public void onClick(View view) {
 
+                String name = binding.name.getText().toString();
+                String email = binding.email.getText().toString();
+                String password = binding.password.getText().toString();
+                String resetPassword = binding.resetPassword.getText().toString();
+                String phone = binding.phone.getText().toString();
 
-                final String Username = binding.username.getText().toString();
-                final String Email = binding.email.getText().toString();
-                final String Password = binding.password.getText().toString();
-                final String Reset_Password = binding.resetPassword.getText().toString();
-                final String Mobile = binding.mobile.getText().toString();
-
-
-                if (Username.isEmpty() || Email.isEmpty() || Password.isEmpty() || Reset_Password.isEmpty() ||
-                        Mobile.isEmpty()) {
-
-
-                } else if (!Password.equals(Reset_Password)) {
-
-
-                } else {
-                    Customer customer = new Customer(Email, Password);
-                    customer.setUsername(Username);
-                    customer.setMobile(Mobile);
-                    customer.signUp();
-                    getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
-
-
+                if (name.isEmpty()){
+                    binding.name.setError("rename");
+                    binding.name.setFocusable(true);
+                }if (email.isEmpty()){
+                    binding.email.setError("rename");
+                    binding.email.setFocusable(true);
+                }if (password.isEmpty()){
+                    binding.password.setError("rename");
+                    binding.password.setFocusable(true);
+                }if (resetPassword.isEmpty()){
+                    binding.resetPassword.setError("rename");
+                    binding.resetPassword.setFocusable(true);
+                }if (phone.isEmpty()){
+                    binding.phone.setError("rename");
+                    binding.phone.setFocusable(true);
+                }else {
+                    if (password.equals(resetPassword)){
+                        Customer customer = new Customer(email, password);
+                        customer.setName(name);
+                        customer.setPhone(phone);
+                        customer.signUp();
+                        getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
+                    }else {
+                        binding.resetPassword.setError("Password is not same");
+                    }
                 }
-
             }
         });
 

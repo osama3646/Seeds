@@ -39,13 +39,13 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:hint="Username"
+                android:hint="Name"
                 app:endIconMode="clear_text"
                 app:hintTextColor="@color/primary"
                 app:startIconDrawable="@drawable/ic_baseline_person">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/username"
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLength="25" />
@@ -124,14 +124,14 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:hint="Mobile"
+                android:hint="Phone"
                 app:endIconMode="clear_text"
                 app:hintTextColor="@color/primary"
                 app:prefixText="+966"
                 app:startIconDrawable="@drawable/ic_phone">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/mobile"
+                    android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
