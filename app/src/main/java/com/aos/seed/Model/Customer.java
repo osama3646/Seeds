@@ -83,6 +83,5 @@ public class Customer {
     }
     public void signOut(){
         FirebaseAuth.getInstance().signOut();
-
     }
 }

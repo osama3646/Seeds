@@ -1,6 +1,7 @@
 package com.aos.seed.Adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class StoreTopRecyclerView extends RecyclerView.Adapter<RecyclerView.View
                 break;
             }
             case 2:{
-                View view = inflater.inflate(R.layout.product_card_model_2,parent,false);
+                View view = inflater.inflate(R.layout.store_offer,parent,false);
                 viewHolder = new StoreTopRecyclerView.viewModel2(view);
                 break;
             }
@@ -49,7 +50,14 @@ public class StoreTopRecyclerView extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         final StoreTopView item = items.get(holder.getAdapterPosition());
-
+        switch (holder.getItemViewType()){
+            case 1:
+                viewModel1 model1 = (viewModel1) holder;
+                model1.category.setText(item.getData());
+            case 2:
+//                viewModel2 model2 = (viewModel2) holder;
+//                model2.offer.setImageURI(Uri.EMPTY);
+        }
     }
 
     @Override

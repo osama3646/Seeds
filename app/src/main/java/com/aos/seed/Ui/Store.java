@@ -20,7 +20,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.aos.seed.Adapter.StoreRecyclerView;
+import com.aos.seed.Adapter.StoreTopRecyclerView;
 import com.aos.seed.Model.Product;
+import com.aos.seed.Model.StoreTopView;
 import com.aos.seed.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,9 +35,11 @@ import java.util.List;
 
 public class Store extends Fragment {
 
-    RecyclerView storeRecyclerView;
+    RecyclerView storeRecyclerView, offerRecyclerView, categoryRecyclerView;
     List<Product> dataHolder;
+    List<StoreTopView> topViewDataHolder;
     StoreRecyclerView storeAdapter;
+    StoreTopRecyclerView storeTopAdapter;
     SharedPreferences shared;
     int layoutCase;
     String lorem;
@@ -49,7 +53,10 @@ public class Store extends Fragment {
         lorem = "Lorem.";
         layoutState = root.findViewById(R.id.layoutState);
         storeRecyclerView = root.findViewById(R.id.storeRecyclerView);
+        offerRecyclerView = root.findViewById(R.id.offer);
+        categoryRecyclerView = root.findViewById(R.id.category);
         dataHolder = new ArrayList<>();
+        topViewDataHolder = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         shared = getContext().getSharedPreferences("storeRecyclerLayout", Context.MODE_PRIVATE);
         if (shared.contains("case")){
@@ -66,6 +73,7 @@ public class Store extends Fragment {
         }else {
             gridLayout();
         }
+        offerRecycler();
 
         layoutState.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +90,19 @@ public class Store extends Fragment {
         });
 
         return root;
+    }
+
+    private void offerRecycler(){
+        offerRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        offerRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        StoreTopView view1 = new StoreTopView("Flower",1);
+        StoreTopView view2 = new StoreTopView("Seed",1);
+        StoreTopView view3 = new StoreTopView("Plant",1);
+        topViewDataHolder.add(view1);
+        topViewDataHolder.add(view2);
+        topViewDataHolder.add(view3);
+        storeTopAdapter = new StoreTopRecyclerView(topViewDataHolder,getContext());
+        offerRecyclerView.setAdapter(storeTopAdapter);
     }
 
 
