@@ -319,7 +319,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="10dp"
                             android:layout_weight="1"
-                            android:src="@drawable/img231"
+                            android:src="@drawable/img1231"
                        />
                     </LinearLayout>
                 </LinearLayout>
