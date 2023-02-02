@@ -50,6 +50,7 @@ public class Store extends Fragment {
     int layoutCase;
     String lorem;
     ImageView layoutState;
+    ImageView CartNavigation;
     FirebaseFirestore db;
 
     @Override
@@ -58,6 +59,7 @@ public class Store extends Fragment {
 
         lorem = "Lorem.";
         layoutState = root.findViewById(R.id.layoutState);
+        CartNavigation = root.findViewById(R.id.CartNavigation);
         storeRecyclerView = root.findViewById(R.id.storeRecyclerView);
         offerRecyclerView = root.findViewById(R.id.offer);
         categoryRecyclerView = root.findViewById(R.id.category);
@@ -97,8 +99,16 @@ public class Store extends Fragment {
             }
         });
 
+        CartNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new cart()).commit();
+            }
+        });
+
         return root;
     }
+
 
     private void offerRecycler(){
         offerRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));

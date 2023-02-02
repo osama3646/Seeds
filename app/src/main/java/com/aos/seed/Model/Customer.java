@@ -65,7 +65,7 @@ public class Customer {
         });
     }
     public void signIn(){
-
+        signOut();
         mAuth = FirebaseAuth.getInstance();
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

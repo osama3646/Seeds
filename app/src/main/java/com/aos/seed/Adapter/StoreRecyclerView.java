@@ -14,9 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aos.seed.Model.Cart;
 import com.aos.seed.Model.Product;
 import com.aos.seed.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.type.DateTime;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,6 +31,7 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
     private List<Product> products;
     private Context context;
     private SharedPreferences shared;
+    private FirebaseFirestore mDb = FirebaseFirestore.getInstance();
 
     public StoreRecyclerView(List<Product> products, Context context) {
         this.products = products;
@@ -79,11 +84,28 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
                     public void onClick(View view) {
                         FirebaseAuth myAuth = FirebaseAuth.getInstance();
                         FirebaseUser user = myAuth.getCurrentUser();
+                         mDb.collection("Cart").whereEqualTo("customerId",user.getUid())
+                                 .whereEqualTo("productId",product.getProductId())
+                                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                     @Override
+                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                         if (task.isSuccessful()){
+                                             QuerySnapshot document = task.getResult();
+                                             mDb.collection("Cart")
+                                                     .document(document.toString())
+                                                     .update("quantity",2);
+                                         }
+                                             Calendar c = Calendar.getInstance();
+                                             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                             Cart cart = new Cart(product.getProductId(), user.getUid(), 1);
+                                             cart.addToDatabase();
 
-                        Calendar c = Calendar.getInstance();
-                        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                        Cart cart = new Cart(product.getProductId(), user.getUid(),1);
-                        cart.addToDatabase();
+
+                                     }
+                                 });
+
+
+
                     }
                 });
                 break;

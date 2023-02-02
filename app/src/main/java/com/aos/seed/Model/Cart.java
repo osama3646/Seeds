@@ -24,6 +24,10 @@ public class Cart {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     boolean bool;
 
+
+    private String CustomerId;
+    private String ItemId;
+
     public Cart(String productId, String customerId, int quantity) {
         this.productId = productId;
         this.customerId = customerId;
@@ -59,4 +63,7 @@ public class Cart {
 
         return bool;
     }
+
+
+
 }
