@@ -94,12 +94,12 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
                                              mDb.collection("Cart")
                                                      .document(document.toString())
                                                      .update("quantity",2);
-                                         }
+                                         }else {
                                              Calendar c = Calendar.getInstance();
                                              SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                                              Cart cart = new Cart(product.getProductId(), user.getUid(), 1);
                                              cart.addToDatabase();
-
+                                         }
 
                                      }
                                  });
