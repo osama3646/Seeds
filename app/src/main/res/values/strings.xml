@@ -14,4 +14,15 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="app_name_Ref">بذرة</string>
+    <string name="size">Size</string>
+    <string name="humidity">Humidity</string>
+    <string name="light">Light</string>
+    <string name="temperature">Temperature</string>
+    <string name="sar" >sar</string>
+    <string name="about">About</string>
+    <string name="product_detail">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</string>
+    <string name="based_on_review">Based on 120 Review</string>
+    <string name="add_reviews">Add Review</string>
+    <string name="user_reviews">Customer reviews</string>
+    <string name="most_useful">Most useful</string>
 </resources>
