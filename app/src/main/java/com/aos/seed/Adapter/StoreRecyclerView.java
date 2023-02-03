@@ -1,7 +1,10 @@
 package com.aos.seed.Adapter;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.text.SimpleDateFormat;
@@ -84,21 +88,34 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
                     public void onClick(View view) {
                         FirebaseAuth myAuth = FirebaseAuth.getInstance();
                         FirebaseUser user = myAuth.getCurrentUser();
+                        Log.d(TAG, "Start of Query");
                          mDb.collection("Cart").whereEqualTo("customerId",user.getUid())
                                  .whereEqualTo("productId",product.getProductId())
                                  .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                      @Override
                                      public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                          if (task.isSuccessful()){
-                                             QuerySnapshot document = task.getResult();
-                                             mDb.collection("Cart")
-                                                     .document(document.toString())
-                                                     .update("quantity",2);
-                                         }else {
-                                             Calendar c = Calendar.getInstance();
-                                             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                                             Cart cart = new Cart(product.getProductId(), user.getUid(), 1);
-                                             cart.addToDatabase();
+                                             Log.d(TAG, "Query:success");
+                                             //QuerySnapshot document = task.getResult();
+                                             for (QueryDocumentSnapshot documentid : task.getResult()) {
+                                               if (documentid.exists()) {
+
+                                                   Log.d(TAG, "Start of for :success");
+                                                   mDb.collection("Cart")
+                                                           .document(documentid.getId())
+                                                           .update("quantity", documentid.getDate("quantity" + 1));
+                                                   Log.d(TAG, "update:success");
+
+                                               }else {
+                                                       Calendar c = Calendar.getInstance();
+                                                       SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                                       Cart cart = new Cart(product.getProductId(), user.getUid(), 1);
+                                                       cart.addToDatabase();
+                                                       Log.d(TAG, "Add new Cart:success");
+
+                                               }
+
+                                             }
                                          }
 
                                      }
