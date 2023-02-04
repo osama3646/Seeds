@@ -97,7 +97,7 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
 //                model.category.setText(product.getCategory());
                 model.price.setText(product.getPrice()+"");
                 model.productImage.setImageList(models);
-                model.productName.setOnClickListener(new View.OnClickListener() {
+                model.layout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         AppCompatActivity activity = (AppCompatActivity) view.getContext();
