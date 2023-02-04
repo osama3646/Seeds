@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.aos.seed.Adapter.StoreRecyclerView;
 import com.aos.seed.Adapter.StoreTopRecyclerView;
@@ -37,6 +38,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Store extends Fragment {
@@ -179,7 +181,10 @@ public class Store extends Fragment {
                         Product product = new Product(document.get("name").toString(),document.get("description").toString(),
                                 Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()),
                                 document.get("category").toString());
+                        ArrayList<String> image = (ArrayList<String>) document.get("image");
+                        product.setImage(image);
                         product.setProductId(document.getId());
+
                         dataHolder.add(product);
                     }
                     storeAdapter = new StoreRecyclerView(dataHolder, getContext());

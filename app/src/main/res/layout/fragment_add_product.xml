@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,18 +18,18 @@
             android:orientation="vertical">
 
             <com.denzcoskun.imageslider.ImageSlider
-                android:id="@+id/addImage"
+                android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 app:iss_corner_radius="20"
                 app:iss_placeholder="@drawable/placeholder_image"
                 app:iss_error_image="@drawable/placeholder_image"/>
 
-            <ImageView
-                android:id="@+id/imgCapture"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"/>
-
+            <Button
+                android:id="@+id/addImage"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/add_image"/>
 
             <EditText
                 android:id="@+id/productName"
