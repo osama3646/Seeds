@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Ui.AddProduct">
 
     <ScrollView
@@ -14,6 +15,19 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:orientation="vertical">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/addImage"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                app:iss_corner_radius="20"
+                app:iss_placeholder="@drawable/placeholder_image"
+                app:iss_error_image="@drawable/placeholder_image"/>
+
+            <ImageView
+                android:id="@+id/imgCapture"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"/>
 
 
             <EditText

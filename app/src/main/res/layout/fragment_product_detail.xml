@@ -5,34 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Ui.product_detail">
+    tools:context=".Ui.ProductDetail"
+    tools:viewBindingIgnore="true">
 
-    <ImageView
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/imageSlider"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@drawable/img_2"
-        android:scaleType="centerCrop"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="300dp" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.denzcoskun.imageslider.ImageSlider
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:iss_title_background="@drawable/img_2"
-                android:id="@+id/ImageSlider"/>
-
-
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        app:iss_error_image="@drawable/placeholder_image"
+        app:iss_placeholder="@drawable/placeholder_image" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -591,6 +572,7 @@
                 android:layout_height="30dp"/>
 
             <LinearLayout
+                android:id="@+id/addReview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

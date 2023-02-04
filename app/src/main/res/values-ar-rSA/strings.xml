@@ -26,4 +26,7 @@
     <string name="add_reviews">إضافة مراجعة</string>
     <string name="user_reviews">مراجعات العملاء</string>
     <string name="most_useful">الأكثر فائدة</string>
+    <string name="add_a_description">إضافة وصف</string>
+    <string name="cancel">إلغاء</string>
+    <string name="add">إضافة</string>
 </resources>

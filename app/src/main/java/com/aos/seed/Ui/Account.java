@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.aos.seed.Model.Customer;
 import com.aos.seed.R;
@@ -27,7 +25,7 @@ public class Account extends Fragment {
         binding.productDetail1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new product_detail()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new ProductDetail()).commit();
             }
         });
         binding.addProduct.setOnClickListener(new View.OnClickListener() {

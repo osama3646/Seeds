@@ -35,7 +35,6 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
     private List<Product> products;
     private Context context;
     private SharedPreferences shared;
-    private FirebaseFirestore mDb = FirebaseFirestore.getInstance();
 
     public StoreRecyclerView(List<Product> products, Context context) {
         this.products = products;
@@ -86,43 +85,9 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
                 model.addToCart.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        FirebaseAuth myAuth = FirebaseAuth.getInstance();
-                        FirebaseUser user = myAuth.getCurrentUser();
-                        Log.d(TAG, "Start of Query");
-                         mDb.collection("Cart").whereEqualTo("customerId",user.getUid())
-                                 .whereEqualTo("productId",product.getProductId())
-                                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                     @Override
-                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                         if (task.isSuccessful()){
-                                             Log.d(TAG, "Query:success");
-                                             //QuerySnapshot document = task.getResult();
-                                             for (QueryDocumentSnapshot documentid : task.getResult()) {
-                                               if (documentid.exists()) {
-
-                                                   Log.d(TAG, "Start of for :success");
-                                                   mDb.collection("Cart")
-                                                           .document(documentid.getId())
-                                                           .update("quantity", documentid.getDate("quantity" + 1));
-                                                   Log.d(TAG, "update:success");
-
-                                               }else {
-                                                       Calendar c = Calendar.getInstance();
-                                                       SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                                                       Cart cart = new Cart(product.getProductId(), user.getUid(), 1);
-                                                       cart.addToDatabase();
-                                                       Log.d(TAG, "Add new Cart:success");
-
-                                               }
-
-                                             }
-                                         }
-
-                                     }
-                                 });
-
-
-
+                        Log.d(TAG,"exit1:");
+                        Cart cart = new Cart(product.getProductId(), 1);
+                        cart.addToDatabase();
                     }
                 });
                 break;

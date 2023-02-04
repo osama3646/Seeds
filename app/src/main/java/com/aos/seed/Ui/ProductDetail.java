@@ -1,6 +1,9 @@
 package com.aos.seed.Ui;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -8,15 +11,10 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.aos.seed.Adapter.StoreTopRecyclerView;
 import com.aos.seed.Model.StoreTopView;
 import com.aos.seed.R;
-import com.aos.seed.databinding.FragmentDesignerBinding;
-import com.aos.seed.databinding.FragmentProductDetailBinding;
+//import com.aos.seed.databinding.FragmentProductDetailBinding;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
@@ -30,32 +28,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class product_detail extends Fragment {
+public class ProductDetail extends Fragment {
 
     RecyclerView categoryRecyclerView;
     List<StoreTopView> dataHolder;
     StoreTopRecyclerView storeTopAdapter;
     FirebaseFirestore db;
-    FragmentProductDetailBinding binding;
+//    FragmentProductDetailBinding binding;
     ImageSlider imageSlider;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = FragmentProductDetailBinding.inflate(inflater, container, false);
+//        binding = FragmentProductDetailBinding.inflate(inflater, container, false);
+        View root = inflater.inflate(R.layout.fragment_product_detail, container, false);
 
-         categoryRecyclerView = binding.categoryRecyclerView;
-        imageSlider = binding.ImageSlider;
+//         categoryRecyclerView = binding.categoryRecyclerView;
+//        imageSlider = binding.ImageSlider;
+        categoryRecyclerView = root.findViewById(R.id.categoryRecyclerView);
+        imageSlider = root.findViewById(R.id.imageSlider);
         ArrayList<SlideModel> slideModel = new ArrayList<>();
 
-        slideModel.add(new SlideModel("https://www.edarabia.com/ar/wp-content/uploads/2020/04/learn-about-plants-their-importance-types-classifications.jpg", ScaleTypes.FIT));
-        slideModel.add(new SlideModel("https://www.bostanji.net/img/articles/%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%86%D8%A8%D8%A7%D8%AA%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B2%D9%8A%D9%86%D8%A9.jpg", ScaleTypes.FIT));
-        slideModel.add(new SlideModel("https://www.edarabia.com/ar/wp-content/uploads/2019/04/7-most-important-best-shade-plants-cut-flowers.jpg", ScaleTypes.FIT));
-        imageSlider.setImageList(slideModel,ScaleTypes.FIT);
+        slideModel.add(new SlideModel("https://www.edarabia.com/ar/wp-content/uploads/2020/04/learn-abou-plants-their-importance-types-classifications.jpg", ScaleTypes.CENTER_CROP));
+        slideModel.add(new SlideModel("https://www.bostanji.net/img/articles/%D8%A3%D8%B3%D9%85%D8%A7%D8%A1%20%D9%86%D8%A8%D8%A7%D8%AA%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B2%D9%8A%D9%86%D8%A9.jpg", ScaleTypes.CENTER_CROP));
+        slideModel.add(new SlideModel("https://www.edarabia.com/ar/wp-content/uploads/2019/04/7-most-important-best-shade-plants-cut-flowers.jpg", ScaleTypes.CENTER_CROP));
+        imageSlider.setImageList(slideModel,ScaleTypes.CENTER_CROP);
 
         dataHolder = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
         setCategoryRecyclerView();
-        return binding.getRoot();
+//        return binding.getRoot();
+        return root;
     }
 
     private void setCategoryRecyclerView(){
