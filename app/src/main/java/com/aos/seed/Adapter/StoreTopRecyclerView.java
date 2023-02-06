@@ -1,6 +1,8 @@
 package com.aos.seed.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aos.seed.Model.StoreTopView;
 import com.aos.seed.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
@@ -42,6 +48,11 @@ public class StoreTopRecyclerView extends RecyclerView.Adapter<RecyclerView.View
                 viewHolder = new StoreTopRecyclerView.viewModel2(view);
                 break;
             }
+            case 3:{
+                View view = inflater.inflate(R.layout.backgound_style1,parent,false);
+                viewHolder = new StoreTopRecyclerView.viewModel1(view);
+                break;
+            }
         }
         return viewHolder;
     }
@@ -54,9 +65,32 @@ public class StoreTopRecyclerView extends RecyclerView.Adapter<RecyclerView.View
             case 1:
                 viewModel1 model1 = (viewModel1) holder;
                 model1.category.setText(item.getData());
+                break;
             case 2:
-//                viewModel2 model2 = (viewModel2) holder;
-//                model2.offer.setImageURI(Uri.EMPTY);
+                viewModel2 model2 = (viewModel2) holder;
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageRef = storage.getReference();
+                StorageReference islandRef = storageRef.child(item.getData());
+
+                final long ONE_MEGABYTE = 1024 * 1024;
+                islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                    @Override
+                    public void onSuccess(byte[] bytes) {
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                        model2.offer.setImageBitmap(bitmap);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle any errors
+                    }
+                });
+                break;
+            case 3:
+                viewModel1 model3 = (viewModel1) holder;
+                model3.category.setBackgroundResource(R.drawable.border_green);
+                model3.category.setText(item.getData());
+                break;
         }
     }
 
