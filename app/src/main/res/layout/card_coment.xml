@@ -7,7 +7,7 @@
     android:layout_gravity="center|top"
     android:padding="16dp"
     android:layout_margin="16dp"
-    android:background="@drawable/backgroud_card_coment"
+    android:background="@drawable/rat_background"
     >
 
 
@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:text="5h ago"
             android:textSize="@dimen/text13"
-            android:textColor="@color/SecondaryColor"
+            android:textColor="@color/secondary"
             />
 
 
