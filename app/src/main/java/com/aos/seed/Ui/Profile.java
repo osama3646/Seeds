@@ -70,18 +70,20 @@ public class Profile extends Fragment {
         binding.saveData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name.isEmpty()){
-                    binding.Fname.setError("Full Name");
-                    binding.Fname.setFocusable(true);
-                }else if(phone.isEmpty()){
-                    binding.Mobile.setError("Mobile");
-                    binding.Mobile.setFocusable(true);
-                }else {
-                    mDb.collection("Customer").document(uid).update("Name",binding.Fname.getText().toString());
-                    mDb.collection("Customer").document(uid).update("phone",binding.Mobile.getText().toString());
-                    getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
-                }
-
+//                if (name.isEmpty()){
+//                    binding.Fname.setError("Full Name");
+//                    binding.Fname.setFocusable(true);
+//                }else if(phone.isEmpty()){
+//                    binding.Mobile.setError("Mobile");
+//                    binding.Mobile.setFocusable(true);
+//                }else {
+//                    mDb.collection("Customer").document(uid).update("Name",binding.Fname.getText().toString());
+//                    mDb.collection("Customer").document(uid).update("phone",binding.Mobile.getText().toString());
+//                    getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
+//                }
+                mDb.collection("Customer").document(uid).update("Name",binding.Fname.getText().toString());
+                mDb.collection("Customer").document(uid).update("phone",binding.Mobile.getText().toString());
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
 
 
 
