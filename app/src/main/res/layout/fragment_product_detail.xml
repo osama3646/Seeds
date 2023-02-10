@@ -344,9 +344,10 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/totalStar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="4.6"
+                            android:text="0.0"
                             android:textSize="@dimen/TextTitle"
                             android:textColor="@color/primaryText"/>
 
@@ -364,9 +365,10 @@
                         android:layout_height="4dp"/>
 
                     <TextView
+                        android:id="@+id/reviewCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/based_on_review"
+                        android:text="@string/there_is_no_review"
                         android:textSize="@dimen/text13"
                         android:textColor="@color/secondaryText"/>
 
@@ -380,42 +382,47 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:id="@+id/star1"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/star"/>
+                            android:src="@drawable/star1"/>
 
                         <Space
                             android:layout_width="6dp"
                             android:layout_height="wrap_content"/>
 
                         <ImageView
+                            android:id="@+id/star2"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/star"/>
+                            android:src="@drawable/star1"/>
 
                         <Space
                             android:layout_width="6dp"
                             android:layout_height="wrap_content"/>
 
                         <ImageView
+                            android:id="@+id/star3"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/star"/>
+                            android:src="@drawable/star1"/>
 
                         <Space
                             android:layout_width="6dp"
                             android:layout_height="wrap_content"/>
 
                         <ImageView
+                            android:id="@+id/star4"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/star"/>
+                            android:src="@drawable/star1"/>
 
                         <Space
                             android:layout_width="6dp"
                             android:layout_height="wrap_content"/>
 
                         <ImageView
+                            android:id="@+id/star5"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/star1"/>
@@ -447,13 +454,14 @@
                             android:layout_height="wrap_content"/>
 
                         <ProgressBar
-                            android:layout_gravity="center_vertical"
+                            android:id="@+id/progressStar5"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:layout_width="100dp"
                             android:layout_height="7dp"
+                            android:layout_gravity="center_vertical"
                             android:max="100"
-                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:progress="100"
-                            android:progressDrawable="@drawable/progress_shape"/>
+                            android:progress="0"
+                            android:progressDrawable="@drawable/progress_shape" />
 
                     </LinearLayout>
 
@@ -474,12 +482,13 @@
                             android:layout_height="wrap_content"/>
 
                         <ProgressBar
+                            android:id="@+id/progressStar4"
                             android:layout_gravity="center_vertical"
                             android:layout_width="100dp"
                             android:layout_height="7dp"
                             android:max="100"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:progress="80"
+                            android:progress="0"
                             android:progressDrawable="@drawable/progress_shape"/>
 
                     </LinearLayout>
@@ -501,12 +510,13 @@
                             android:layout_height="wrap_content"/>
 
                         <ProgressBar
+                            android:id="@+id/progressStar3"
                             android:layout_gravity="center_vertical"
                             android:layout_width="100dp"
                             android:layout_height="7dp"
                             android:max="100"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:progress="60"
+                            android:progress="0"
                             android:progressDrawable="@drawable/progress_shape"/>
 
                     </LinearLayout>
@@ -528,12 +538,13 @@
                             android:layout_height="wrap_content"/>
 
                         <ProgressBar
+                            android:id="@+id/progressStar2"
                             android:layout_gravity="center_vertical"
                             android:layout_width="100dp"
                             android:layout_height="7dp"
                             android:max="100"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:progress="40"
+                            android:progress="0"
                             android:progressDrawable="@drawable/progress_shape"/>
 
                     </LinearLayout>
@@ -555,12 +566,13 @@
                             android:layout_height="wrap_content"/>
 
                         <ProgressBar
+                            android:id="@+id/progressStar1"
                             android:layout_gravity="center_vertical"
                             android:layout_width="100dp"
                             android:layout_height="7dp"
                             android:max="100"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                            android:progress="20"
+                            android:progress="0"
                             android:progressDrawable="@drawable/progress_shape"/>
 
                     </LinearLayout>
@@ -679,6 +691,7 @@
                 android:layout_height="30dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/userReview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

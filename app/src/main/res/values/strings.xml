@@ -21,7 +21,7 @@
     <string name="sar" >sar</string>
     <string name="about">About</string>
     <string name="product_detail">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</string>
-    <string name="based_on_review">Based on 120 Review</string>
+    <string name="based_on">Based on </string>
     <string name="add_reviews">Add Review</string>
     <string name="user_reviews">Customer reviews</string>
     <string name="most_useful">Most useful</string>
@@ -72,4 +72,7 @@
     <string name="WhoBenefits">Who benefits?</string>
     <string name="WhoBenefitsSubtitle">Those interested in agriculture, individuals, stores and those with expertise</string>
     <string name="Advantages">Safety, speed, easy provision of seeds, quick access to agricultural services, ease of payment, and product and service guarantee</string>
+    <string name="required">Required</string>
+    <string name="review">" Reviews"</string>
+    <string name="there_is_no_review">There is no review</string>
 </resources>

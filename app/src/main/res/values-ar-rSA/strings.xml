@@ -22,7 +22,7 @@
     <string name="sar">س.ر</string>
     <string name="about">حول</string>
     <string name="product_detail">"لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من الزمن لم تقضي على هذا النص، بل انه حتى صار مستخدماً وبشكله الأصلي في الطباعة والتنضيد الإلكتروني. انتشر بشكل كبير في ستينيّات هذا القرن مع إصدار رقائق \"ليتراسيت\" (Letraset) البلاستيكية تحوي مقاطع من هذا النص، وعاد لينتشر مرة أخرى مؤخراَ مع ظهور برامج النشر الإلكتروني مثل \"ألدوس بايج مايكر\" (Aldus PageMaker) والتي حوت أيضاً على نسخ من نص لوريم إيبسوم.  "</string>
-    <string name="based_on_review">بناء على 120 مراجعة</string>
+    <string name="based_on">بناء على </string>
     <string name="add_reviews">إضافة مراجعة</string>
     <string name="user_reviews">مراجعات العملاء</string>
     <string name="most_useful">الأكثر فائدة</string>
@@ -73,4 +73,7 @@
     <string name="WhoBenefits">من المستفيد ؟</string>
     <string name="WhoBenefitsSubtitle">المهتمين بالزراعة , الافراد والمتاجر و ذو الخبرات</string>
     <string name="Advantages">أمان , سرعة , توفير سهلة بذرة الوصول السريعة الى الخدمات الزراعية وسهولة الدفع و ضمان الخدمة والمنتج</string>
+    <string name="there_is_no_review">لا يوجد مراجعة</string>
+    <string name="review">" مراجعات"</string>
+    <string name="required">مطلوب</string>
 </resources>
