@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Profile "
+        android:text="Profile"
         android:textSize="@dimen/TextTitle"
         android:textStyle="bold"
         android:textColor="@color/primary"
@@ -37,11 +37,12 @@
         android:layout_marginBottom="8dp"
         app:endIconMode="clear_text"
         app:startIconDrawable="@drawable/ic_baseline_person">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Fname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name "
-            />
+            android:hint="Full Name " />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -56,10 +57,11 @@
         app:startIconDrawable="@drawable/ic_baseline_email">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/em"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -75,10 +77,11 @@
         app:prefixText="+966">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mobile"
-            android:inputType="phone"/>
+            android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
