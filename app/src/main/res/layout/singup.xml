@@ -30,7 +30,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:hint="Name"
+            android:hint="@string/FullName"
             app:endIconMode="clear_text"
             app:hintTextColor="@color/primary"
             app:startIconDrawable="@drawable/ic_baseline_person">
@@ -59,7 +59,7 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:maxLength="100" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -80,9 +80,9 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:maxLength="18"
-                android:inputType="textPassword" />
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:maxLength="18" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -101,9 +101,9 @@
                 android:id="@+id/resetPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Reset Password"
+                android:hint="@string/repassword"
                 android:inputType="textPassword"
-                android:maxLength="18"/>
+                android:maxLength="18" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -115,7 +115,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:hint="Phone"
+            android:hint="@string/PhoneNumber"
             app:endIconMode="clear_text"
             app:hintTextColor="@color/primary"
             app:prefixText="+966"
@@ -135,10 +135,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Sign Up"
+            android:maxLength="10"
+            android:text="@string/sign_up"
             android:textSize="15dp"
-            app:cornerRadius="10dp"
-            android:maxLength="10" />
+            app:cornerRadius="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,14 +152,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Do have account?"
+                android:text="@string/DoHaveAccount"
                 android:textColor="@color/primaryText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="Sing in"
+                android:text="@string/sign_in"
                 android:textColor="@color/primary"
                 android:textStyle="bold" />
         </LinearLayout>

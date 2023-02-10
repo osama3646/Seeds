@@ -42,7 +42,7 @@
             android:id="@+id/Fname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name " />
+            android:hint="@string/FullName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -60,9 +60,9 @@
             android:id="@+id/em"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:enabled="false"/>
+            android:enabled="false"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -81,7 +81,7 @@
             android:id="@+id/Mobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mobile"
+            android:hint="@string/PhoneNumber"
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,15 +90,15 @@
         android:layout_height="match_parent"
         android:layout_margin="16dp"
         >
-    <Button
-        android:id="@+id/saveData"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Save"
-        android:textSize="15dp"
-        app:cornerRadius="10dp"
-        android:layout_gravity="center"
-        />
+
+        <Button
+            android:id="@+id/saveData"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="@string/Save"
+            android:textSize="15dp"
+            app:cornerRadius="10dp" />
     </LinearLayout>
 </LinearLayout>
 

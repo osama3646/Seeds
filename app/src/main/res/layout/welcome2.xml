@@ -40,24 +40,23 @@
     </LinearLayout>
 
     <TextView
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="من المستفيد ؟ "
-        android:layout_marginTop="-100dp"
-        android:layout_gravity="center"
-        android:textSize="@dimen/TextTitle"
-        android:textStyle="bold"
-        android:textColor="@color/primaryText"
-        />
-    <TextView
         android:layout_height="wrap_content"
-        android:layout_width="250dp"
-        android:text="المهتمين بالزراعة , الافراد والمتاجر وذو الخبرات "
         android:layout_gravity="center"
-        android:textStyle="bold"
-        android:gravity="center"
+        android:layout_marginTop="-100dp"
+        android:text="@string/WhoBenefits"
         android:textColor="@color/primaryText"
-        />
+        android:textSize="@dimen/TextTitle"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/WhoBenefitsSubtitle"
+        android:textColor="@color/primaryText"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -96,26 +95,24 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_weight="1"
-            android:text="Back"
-            android:gravity="center"
-            android:textSize="@dimen/text"
-            android:textStyle="bold"
-            android:textColor="@color/primaryText"
             android:layout_marginEnd="200dp"
+            android:layout_weight="1"
             android:background="@drawable/backgroud_welcom_pr"
-            />
+            android:gravity="center"
+            android:text="@string/Back"
+            android:textColor="@color/primaryText"
+            android:textSize="@dimen/text"
+            android:textStyle="bold" />
 
         <TextView
-            android:layout_height="40dp"
             android:layout_width="wrap_content"
-            android:text="Next"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="@dimen/text"
-            android:textStyle="bold"
             android:background="@drawable/background_welcom_sc"
-            />
+            android:gravity="center"
+            android:text="@string/Next"
+            android:textSize="@dimen/text"
+            android:textStyle="bold" />
 
 
 

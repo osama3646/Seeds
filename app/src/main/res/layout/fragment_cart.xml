@@ -112,7 +112,7 @@
                         android:id="@+id/textView31"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        android:text="Sub total"
+                        android:text="@string/Subtotal"
                         android:textStyle="bold" />
 
                     <TextView
@@ -152,7 +152,7 @@
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        android:text="VAT"
+                        android:text="@string/VAT"
                         android:textStyle="bold" />
 
                     <TextView
@@ -192,7 +192,7 @@
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        android:text="Sub total"
+                        android:text="@string/discount"
                         android:textStyle="bold" />
 
                     <TextView
@@ -231,7 +231,7 @@
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
-                        android:text="Sub total"
+                        android:text="@string/Total"
                         android:textStyle="bold" />
 
                     <TextView
@@ -276,7 +276,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:text="Continue to Payment" />
+                android:text="@string/ContinueToPayment" />
 
 
         </LinearLayout>

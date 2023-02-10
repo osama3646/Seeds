@@ -36,8 +36,7 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            />
+            android:hint="@string/Username" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +54,7 @@
             android:id="@+id/Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,8 +69,7 @@
             android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remember me"
-            />
+            android:text="@string/RememberMe" />
 
         <TextView
             android:id="@+id/textView"
@@ -79,24 +77,23 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:text="Forgot Password"
+            android:text="@string/ForgotPassword"
             android:textColor="#498553"
             android:textStyle="bold" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/signIn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Sigin"
-        android:textSize="15dp"
-        app:cornerRadius="10dp"
-        />
+        <Button
+            android:id="@+id/signIn"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/sign_in"
+            android:textSize="15dp"
+            app:cornerRadius="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -110,7 +107,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have account?"
+            android:text="@string/DontHaveAccount"
             android:textColor="#000000" />
 
         <TextView
@@ -118,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Create a new account"
+            android:text="@string/CreateAccount"
             android:textColor="#498553"
             android:textStyle="bold" />
     </LinearLayout>>

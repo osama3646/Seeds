@@ -58,6 +58,7 @@ public class Profile extends Fragment {
              }
          });
 
+
         binding.saveData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +77,7 @@ public class Profile extends Fragment {
                     Toast.makeText(requireContext(),  "مرحبا: " + name , Toast.LENGTH_SHORT).show();
                     getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
                 }
+
 
 
 

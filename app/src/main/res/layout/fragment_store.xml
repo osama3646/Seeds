@@ -25,7 +25,7 @@
                 android:layout_height="35dp"
                 android:background="@drawable/border_green"
                 android:iconifiedByDefault="false"
-                android:queryHint="Search "></SearchView>
+                android:queryHint="@string/Search"></SearchView>
 
             <ImageView
                 android:id="@+id/layoutState"
@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="Trending"
+                    android:text="@string/Trending"
                     android:textColor="@color/primary"
                     android:textSize="@dimen/TextTitle"
                     android:textStyle="bold" />
