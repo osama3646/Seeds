@@ -29,4 +29,7 @@
     <string name="add_a_description">إضافة وصف</string>
     <string name="cancel">إلغاء</string>
     <string name="add">إضافة</string>
+    <string name="camera">الكامرة</string>
+    <string name="gallery">المعرض</string>
+    <string name="add_image">إضافة صورة</string>
 </resources>

@@ -1,9 +1,11 @@
 package com.aos.seed.Ui;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,23 +38,28 @@ import java.util.List;
 public class ProductDetail extends Fragment {
 
     RecyclerView categoryRecyclerView;
+    LinearLayout addReview;
     List<StoreTopView> dataHolder;
     StoreTopRecyclerView storeTopAdapter;
     FirebaseFirestore db;
 //    FragmentProductDetailBinding binding;
+    View addReviewLayout;
     ImageSlider imageSlider;
     Product product;
     TextView name;
+
     ArrayList<SlideModel> slideModel = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //        binding = FragmentProductDetailBinding.inflate(inflater, container, false);
         View root = inflater.inflate(R.layout.fragment_product_detail, container, false);
+        addReviewLayout = getLayoutInflater().inflate(R.layout.add_review, null);
 
 //         categoryRecyclerView = binding.categoryRecyclerView;
 //        imageSlider = binding.ImageSlider;
         categoryRecyclerView = root.findViewById(R.id.categoryRecyclerView);
+        addReview = root.findViewById(R.id.addReview);
         imageSlider = root.findViewById(R.id.imageSlider);
         name = root.findViewById(R.id.productName);
         db = FirebaseFirestore.getInstance();
@@ -66,10 +73,16 @@ public class ProductDetail extends Fragment {
                 ArrayList<String> image = (ArrayList<String>) document.get("image");
                 for (int i=0;i<image.size();i++){
                     slideModel.add(new SlideModel(image.get(i), ScaleTypes.CENTER_CROP));
-                    Toast.makeText(getContext(), ""+image.get(i), Toast.LENGTH_SHORT).show();
                 }
                 name.setText(document.get("name").toString());
                 imageSlider.setImageList(slideModel,ScaleTypes.CENTER_CROP);
+            }
+        });
+
+        addReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setAlert();
             }
         });
 
@@ -97,5 +110,11 @@ public class ProductDetail extends Fragment {
                 }
             }
         });
+    }
+    private void setAlert(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(addReviewLayout);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
