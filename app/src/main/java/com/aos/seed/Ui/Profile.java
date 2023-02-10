@@ -1,10 +1,12 @@
 package com.aos.seed.Ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,14 +40,9 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater,container,false);
 
-
-
         auth = FirebaseAuth.getInstance();
         mDb = FirebaseFirestore.getInstance();
         uid = auth.getCurrentUser().getUid();
-
-        String name = binding.Fname.getText().toString();
-        String phone = binding.Mobile.getText().toString();
 
 
          mDb.collection("Customer").document(uid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -57,33 +54,29 @@ public class Profile extends Fragment {
                      binding.Fname.setText(snapshots.getString("Name"));
                      binding.em.setText(snapshots.getString("email"));
                      binding.Mobile.setText(snapshots.getString("phone"));
-
-
                  }
-
              }
          });
-
-
-
 
         binding.saveData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (name.isEmpty()){
-//                    binding.Fname.setError("Full Name");
-//                    binding.Fname.setFocusable(true);
-//                }else if(phone.isEmpty()){
-//                    binding.Mobile.setError("Mobile");
-//                    binding.Mobile.setFocusable(true);
-//                }else {
-//                    mDb.collection("Customer").document(uid).update("Name",binding.Fname.getText().toString());
-//                    mDb.collection("Customer").document(uid).update("phone",binding.Mobile.getText().toString());
-//                    getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
-//                }
-                mDb.collection("Customer").document(uid).update("Name",binding.Fname.getText().toString());
-                mDb.collection("Customer").document(uid).update("phone",binding.Mobile.getText().toString());
-                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
+                String name = binding.Fname.getText().toString().trim();
+                String phone = binding.Mobile.getText().toString().trim();
+
+                if (name.isEmpty()){
+                    binding.Fname.setError("Full Name");
+                    binding.Fname.setFocusable(true);
+                }if(phone.isEmpty()){
+                    binding.Mobile.setError("Mobile");
+                    binding.Mobile.setFocusable(true);
+                }else {
+                    mDb.collection("Customer").document(uid).update("Name",binding.Fname.getText().toString());
+                    mDb.collection("Customer").document(uid).update("phone",binding.Mobile.getText().toString());
+                    Toast.makeText(requireContext(),  "مرحبا: " + name , Toast.LENGTH_SHORT).show();
+                    getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Store()).commit();
+                }
+
 
 
 
