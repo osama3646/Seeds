@@ -78,6 +78,7 @@
     <string name="required">مطلوب</string>
     <string name="plant_size">حجم النبات</string>
     <string name="plant_humidity">رطوبة النبات</string>
+    <string name="plant_temperature">درجة حرارة النبات</string>
     <string name="plant_light">انتشار الضوء للنبات</string>
     <string name="to">الى</string>
     <string name="from">من</string>
@@ -92,6 +93,13 @@
         <item>منتشر</item>
         <item>غير منتشر</item>
     </string-array>
-    <string name="plant_temperature">درجة حرارة النبات</string>
     <string name="my_cart">عربة التسوق</string>
+    <string name="likes">المفضلة</string>
+    <string name="the_product_has_been_added_to_the_cart">تمت إضافة هذا المنتج الى العربة</string>
+    <string name="Continue_shopping">متابعة التسوق</string>
+    <string name="follow_up_on_the_purchase">متابعة الشراء</string>
+    <string name="add_to_cart">إضافة الى السلة</string>
+    <string name="country">الدولة</string>
+    <string name="administrative_region">المنطقة الإدارية</string>
+    <string name="residential_quarter">"الحي السكني "</string>
 </resources>

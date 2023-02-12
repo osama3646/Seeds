@@ -82,6 +82,8 @@
     <string name="to">To</string>
     <string name="from">From</string>
     <string name="my_cart">My Cart</string>
+    <string name="likes">Likes</string>
+    <string name="the_product_has_been_added_to_the_cart">The product has been added to the cart</string>
     <string-array name="plant_size_array">
         <item>Very large</item>
         <item>Large</item>
@@ -93,4 +95,10 @@
         <item>Diffuse</item>
         <item>Not Diffuse</item>
     </string-array>
+    <string name="Continue_shopping">Continue shopping</string>
+    <string name="follow_up_on_the_purchase">Follow up on the purchase</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="country">Country</string>
+    <string name="administrative_region">Administrative region</string>
+    <string name="residential_quarter">Residential quarter</string>
 </resources>

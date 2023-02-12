@@ -55,6 +55,15 @@
                 android:textSize="16dp" />
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:drawableEnd="@drawable/ic_next"
+                android:text="@string/likes"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+
+            <TextView
                 android:id="@+id/addProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
