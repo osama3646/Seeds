@@ -36,46 +36,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:hint="Product Name" />
+                android:hint="@string/ProductName"
+                android:inputType="text" />
 
             <EditText
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textLongMessage"
-                android:hint="Description" />
+                android:hint="@string/Description"
+                android:inputType="textLongMessage" />
 
             <EditText
                 android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number"
-                android:hint="Price" />
+                android:hint="@string/Price"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number"
-                android:hint="Stock" />
+                android:hint="@string/Stock"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:hint="Category" />
+                android:hint="@string/Category"
+                android:inputType="text" />
 
             <Button
                 android:id="@+id/save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save"/>
+                android:text="@string/Save" />
 
 
         </LinearLayout>

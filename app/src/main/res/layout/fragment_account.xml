@@ -38,12 +38,11 @@
                 android:id="@+id/Profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textColor="#000000"
-                android:textSize="16dp"
                 android:layout_margin="8dp"
                 android:drawableEnd="@drawable/ic_next"
-                />
+                android:text="@string/Profile"
+                android:textColor="#000000"
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/productDetail1"
@@ -51,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:drawableEnd="@drawable/ic_next"
-                android:text="productDetail"
+                android:text="@string/productDetail"
                 android:textColor="#000000"
                 android:textSize="16dp" />
 
@@ -61,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:drawableEnd="@drawable/ic_next"
-                android:text="addProduct"
+                android:text="@string/addProduct"
                 android:textColor="#000000"
                 android:textSize="16dp" />
 
@@ -91,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:drawableEnd="@drawable/ic_next"
-                android:text="signOut"
+                android:text="@string/signOut"
                 android:textColor="#000000"
                 android:textSize="16dp" />
 
@@ -108,42 +107,45 @@
 
 
             <TextView
+                android:id="@+id/AdoutSeed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Adout Seed"
-                android:textColor="#000000"
-                android:textSize="16dp"
                 android:layout_margin="8dp"
                 android:drawableEnd="@drawable/ic_next"
-                />
+                android:text="@string/AdoutSeed"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+
             <TextView
+                android:id="@+id/PrivacyPolicy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Privacy Policy"
-                android:textColor="#000000"
-                android:textSize="16dp"
                 android:layout_margin="8dp"
                 android:drawableEnd="@drawable/ic_next"
-                />
+                android:text="@string/PrivacyPolicy"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+
             <TextView
+                android:id="@+id/TermsAndConditions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Terms and Conditions"
-                android:textColor="#000000"
-                android:textSize="16dp"
                 android:layout_margin="8dp"
                 android:drawableEnd="@drawable/ic_next"
-                />
+                android:text="@string/TermsAndConditions"
+                android:textColor="#000000"
+                android:textSize="16dp" />
+
             <TextView
+                android:id="@+id/Language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="العربية"
-                android:textColor="#000000"
-                android:textSize="16dp"
                 android:layout_margin="8dp"
                 android:drawableEnd="@drawable/ic_next"
                 android:gravity="end"
-                />
+                android:text="@string/language"
+                android:textColor="#000000"
+                android:textSize="16dp" />
         </LinearLayout>
 
     </LinearLayout>

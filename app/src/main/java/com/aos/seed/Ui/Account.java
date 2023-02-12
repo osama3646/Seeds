@@ -69,6 +69,13 @@ public class Account extends Fragment {
             }
         });
 
+        binding.Language.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         return binding.getRoot();
     }
 }

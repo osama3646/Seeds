@@ -40,25 +40,23 @@
     </LinearLayout>
 
     <TextView
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="بذرة"
-        android:layout_marginTop="-100dp"
-        android:layout_gravity="center"
-        android:textSize="@dimen/TextTitle"
-        android:textStyle="bold"
-        android:textColor="@color/primaryText"
-        />
-    <TextView
         android:layout_height="wrap_content"
-        android:layout_width="300dp"
-        android:text="أمان , سرعة , توفير
-سهلة بذرة الوصول السريعة الى الخدمات الزراعية وسهولة الدفع و ضمان الخدمة والمنتج  "
         android:layout_gravity="center"
-        android:textStyle="bold"
-        android:gravity="center"
+        android:layout_marginTop="-100dp"
+        android:text="@string/app_name"
         android:textColor="@color/primaryText"
-        />
+        android:textSize="@dimen/TextTitle"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/Advantages"
+        android:textColor="@color/primaryText"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -101,7 +99,7 @@
             android:layout_weight="1"
             android:background="@drawable/backgroud_welcom_pr"
             android:gravity="center"
-            android:text="Back"
+            android:text="@string/Back"
             android:textColor="@color/primaryText"
             android:textSize="@dimen/text"
             android:textStyle="bold" />
@@ -112,7 +110,7 @@
             android:layout_weight="1"
             android:background="@drawable/background_welcom_sc"
             android:gravity="center"
-            android:text="Next"
+            android:text="@string/Next"
             android:textSize="@dimen/text"
             android:textStyle="bold" />
 
