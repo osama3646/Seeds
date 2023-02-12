@@ -49,11 +49,11 @@
     <string name="Stock">المخزون</string>
     <string name="Category">الفئة</string>
     <string name="Save">حفظ</string>
-    <string name="VAT">VAT</string>
-    <string name="ContinueToPayment">إتمام الشراء</string>
+    <string name="VAT">الضريبة</string>
+    <string name="continue_to_payment">إتمام الشراء</string>
     <string name="discount">الخصم</string>
     <string name="Shipping">الشحن</string>
-    <string name="Subtotal">المجموع الفرعي</string>
+    <string name="sub_total">المجموع الفرعي</string>
     <string name="Total">المجموع</string>
     <string name="PhoneNumber">رقم الجوال</string>
     <string name="FullName">الاسم الكامل</string>
@@ -78,7 +78,6 @@
     <string name="required">مطلوب</string>
     <string name="plant_size">حجم النبات</string>
     <string name="plant_humidity">رطوبة النبات</string>
-    <string name="plant_temperature">درجة حرارة النبات</string>
     <string name="plant_light">انتشار الضوء للنبات</string>
     <string name="to">الى</string>
     <string name="from">من</string>
@@ -93,4 +92,6 @@
         <item>منتشر</item>
         <item>غير منتشر</item>
     </string-array>
+    <string name="plant_temperature">درجة حرارة النبات</string>
+    <string name="my_cart">عربة التسوق</string>
 </resources>

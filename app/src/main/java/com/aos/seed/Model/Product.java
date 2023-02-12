@@ -20,7 +20,7 @@ public class Product {
     String productId, name, description, storeId, size, humidity, light, temperature;
     ArrayList<String> image = new ArrayList<>(), category = new ArrayList<>();
     float price;
-    int stock;
+    int stock, quantity;
 
     public Product(String name, String description, float price, int stock) {
         this.name = name;
@@ -44,6 +44,14 @@ public class Product {
         item.put("light",light);
         item.put("temperature",temperature);
         db.collection("Products").add(item);
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getProductId() {

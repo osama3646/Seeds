@@ -49,10 +49,10 @@
     <string name="Category">Category</string>
     <string name="Save">Save</string>
     <string name="VAT">VAT</string>
-    <string name="ContinueToPayment">Continue to Payment</string>
+    <string name="continue_to_payment">Continue to Payment</string>
     <string name="Shipping">Shipping</string>
     <string name="discount">Discount</string>
-    <string name="Subtotal">Subtotal</string>
+    <string name="sub_total">Sub total</string>
     <string name="Total">Total</string>
     <string name="PhoneNumber">Phone Number</string>
     <string name="FullName">Full Name</string>
@@ -81,6 +81,7 @@
     <string name="plant_temperature">Plant temperature</string>
     <string name="to">To</string>
     <string name="from">From</string>
+    <string name="my_cart">My Cart</string>
     <string-array name="plant_size_array">
         <item>Very large</item>
         <item>Large</item>

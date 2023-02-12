@@ -104,7 +104,7 @@ public class Store extends Fragment {
         CartNavigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new cart()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new cart()).addToBackStack(null).commit();
             }
         });
 

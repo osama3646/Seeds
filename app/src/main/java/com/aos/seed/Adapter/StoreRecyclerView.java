@@ -25,6 +25,7 @@ import com.aos.seed.Ui.ProductDetail;
 import com.aos.seed.Ui.Store;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -108,10 +109,10 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
                         activity.getSupportFragmentManager().beginTransaction().add(R.id.layout25,detail).addToBackStack(null).commit();
                     }
                 });
-                model.productImage.setOnClickListener(new View.OnClickListener() {
+                model.productImage.setItemClickListener(new ItemClickListener() {
                     @Override
-                    public void onClick(View view) {
-                        AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                    public void onItemSelected(int i) {
+                        AppCompatActivity activity = (AppCompatActivity) context;
                         ProductDetail detail = new ProductDetail();
                         Bundle bundle = new Bundle();
                         bundle.putString("productId",product.getProductId());

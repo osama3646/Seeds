@@ -1,103 +1,82 @@
 package com.aos.seed.Ui;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.aos.seed.Adapter.CartRecyclerView;
+import com.aos.seed.Model.Cart;
 import com.aos.seed.Model.Product;
 import com.aos.seed.databinding.FragmentCartBinding;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-
 public class cart extends Fragment {
 
-
    private FragmentCartBinding binding;
-   // ArrayList<Item> itemArrayList;
-    CartRecyclerView cartRecyclerView;
-    FirebaseFirestore db;
-    List<Product> itemArrayList;
-    RecyclerView storeRecyclerView;
-
-    private String userid ;
+   private FirebaseFirestore db = FirebaseFirestore.getInstance();
+   private CartRecyclerView cartAdapter;
+   private List<Product> dataHolder = new ArrayList<>();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentCartBinding.inflate(inflater,container,false);
-        RecyclerView storeRecyclerView = binding.ItemRecyclerView;
-        storeRecyclerView.setHasFixedSize(true);
-        storeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        itemArrayList = new ArrayList<>();
-
-        db = FirebaseFirestore.getInstance();
-
-       // cartRecyclerView = new CartRecyclerView(getContext() ,itemArrayList);
+        binding.ItemRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.ItemRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        cartAdapter = new CartRecyclerView(getContext(), dataHolder);
+        binding.ItemRecyclerView.setAdapter(cartAdapter);
 
 
-      //  getItem();
-
-        db.collection("Products").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("Cart").whereEqualTo("customerId", FirebaseAuth.getInstance().getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
-                    for (QueryDocumentSnapshot document : task.getResult()){
-                        Product product = new Product(document.get("name").toString(),document.get("description").toString(),
-                                Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()));
-                        product.setProductId(document.getId());
-                        itemArrayList.add(product);
+                    if (!task.getResult().isEmpty()){
+                        for (QueryDocumentSnapshot document : task.getResult()){
+
+                            Log.d("osama",document.getData()+"");
+                            db.collection("Products").document(document.get("productId").toString()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()){
+                                        if (task.getResult().exists()){
+                                            DocumentSnapshot snapshot = task.getResult();
+                                            Product product = new Product(snapshot.get("name").toString(), snapshot.get("description").toString(), Float.parseFloat(snapshot.get("price").toString()), Integer.parseInt(snapshot.get("stock").toString()));
+                                            product.setImage((ArrayList<String>) snapshot.get("image"));
+                                            product.setQuantity(Integer.parseInt(document.get("quantity").toString()));
+                                            product.setProductId(snapshot.getId());
+                                            dataHolder.add(product);
+                                            cartAdapter.notifyDataSetChanged();
+                                            Log.d("osama",snapshot.getData()+"");
+                                        }
+                                    }
+                                }
+                            });
+                        }
                     }
-                    cartRecyclerView = new CartRecyclerView(getContext(),itemArrayList);
-                    storeRecyclerView.setAdapter(cartRecyclerView);
                 }
             }
         });
-
-
         return binding.getRoot();
     }
-
-
-
-
-//    private void getItem(){
-//        db.collection("Cart")
-//                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-//                    if (error != null){
-//
-//                        Log.e("firestore", error.getMessage());
-//                        return;
-//                    }
-//                    for (DocumentChange dc : value.getDocumentChanges()){
-//
-//                        if (dc.getType() == DocumentChange.Type.ADDED){
-//
-//                        }
-//                    }
-//
-//                });
-//    }
-
-
 }
