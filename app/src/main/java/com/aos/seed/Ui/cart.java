@@ -62,8 +62,7 @@ public class cart extends Fragment {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot document : task.getResult()){
                         Product product = new Product(document.get("name").toString(),document.get("description").toString(),
-                                Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()),
-                                document.get("category").toString());
+                                Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()));
                         product.setProductId(document.getId());
                         itemArrayList.add(product);
                     }

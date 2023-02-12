@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,11 +74,12 @@ public class ProductDetail extends Fragment {
     View addReviewLayout;
     ImageSlider imageSlider;
     Product product;
-    TextView name, cancelReview, saveReview, reviewCount, totalStar;
+    ScrollView scrollView;
+    TextView name, plantSize, plantHumidity, plantLight, plantTemperature, description, price, stock, cancelReview, saveReview, reviewCount, totalStar;
     AlertDialog dialog;
-    ImageView star1, star2, star3, star4, star5,star01, star02, star03, star04, star05;
+    ImageView plus, minus, star1, star2, star3, star4, star5,star01, star02, star03, star04, star05;
     EditText starDescription;
-    int star, scoreTotal, star1Count, star2Count, star3Count, star4Count, star5Count, count;
+    int iStock, star, scoreTotal, star1Count, star2Count, star3Count, star4Count, star5Count, count;
     ProgressBar progressStar1, progressStar2, progressStar3, progressStar4, progressStar5;
     LinearLayout starLayout;
     String productId;
@@ -97,6 +99,16 @@ public class ProductDetail extends Fragment {
         addReview = root.findViewById(R.id.addReview);
         imageSlider = root.findViewById(R.id.imageSlider);
         name = root.findViewById(R.id.productName);
+        plantSize = root.findViewById(R.id.plantSize);
+        plantHumidity = root.findViewById(R.id.plantHumidity);
+        plantLight = root.findViewById(R.id.plantLight);
+        plantTemperature = root.findViewById(R.id.plantTemperature);
+        description = root.findViewById(R.id.description);
+        price = root.findViewById(R.id.price);
+        stock = root.findViewById(R.id.stock);
+        plus = root.findViewById(R.id.plus);
+        minus = root.findViewById(R.id.minus);
+        scrollView = root.findViewById(R.id.scrollView);
         reviewCount = root.findViewById(R.id.reviewCount);
         totalStar = root.findViewById(R.id.totalStar);
         progressStar1 = root.findViewById(R.id.progressStar1);
@@ -115,6 +127,14 @@ public class ProductDetail extends Fragment {
         builder.setView(addReviewLayout);
         builder.setTitle(getString(R.string.add_reviews));
 
+        userReview.setLayoutManager(new LinearLayoutManager(getContext()));
+        userReview.setItemAnimator(new DefaultItemAnimator());
+        categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        categoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        reviewAdapter = new ReviewRecyclerView(reviewList,getContext());
+        userReview.setAdapter(reviewAdapter);
+
 
         dialog = builder.create();
 
@@ -123,15 +143,60 @@ public class ProductDetail extends Fragment {
         db.collection("Products").document(productId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot document) {
-                ArrayList<String> image = (ArrayList<String>) document.get("image");
-                for (int i=0;i<image.size();i++){
-                    slideModel.add(new SlideModel(image.get(i), ScaleTypes.CENTER_CROP));
+                product = new Product(document.get("name").toString(), document.get("description").toString(), Float.parseFloat(document.get("price").toString()), Integer.parseInt(document.get("stock").toString()));
+                product.setSize(document.get("size").toString());
+                product.setHumidity(document.get("humidity").toString());
+                product.setLight(document.get("light").toString());
+                product.setTemperature(document.get("temperature").toString());
+                product.setImage((ArrayList<String>) document.get("image"));
+                product.setCategory((ArrayList<String>) document.get("category"));
+                product.setProductId(productId);
+
+                name.setText(product.getName());
+                description.setText(product.getDescription());
+                price.setText(product.getPrice()+"");
+                plantSize.setText(product.getSize());
+                plantHumidity.setText(product.getHumidity());
+                plantLight.setText(product.getLight());
+                plantTemperature.setText(product.getTemperature());
+                for (int i=0;i<product.getImage().size();i++){
+                    slideModel.add(new SlideModel(product.getImage().get(i),ScaleTypes.CENTER_CROP));
                 }
-                name.setText(document.get("name").toString());
+                for (int i=0;i<product.getCategory().size();i++){
+                    StoreTopView view = new StoreTopView(product.getCategory().get(i),3);
+                    dataHolder.add(view);
+                }
                 imageSlider.setImageList(slideModel,ScaleTypes.CENTER_CROP);
+                storeTopAdapter = new StoreTopRecyclerView(dataHolder,getContext());
+                categoryRecyclerView.setAdapter(storeTopAdapter);
             }
         });
-
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iStock = Integer.parseInt(stock.getText().toString());
+                if (iStock<product.getStock()){
+                    iStock++;
+                    stock.setText(""+iStock);
+                }
+            }
+        });
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                iStock = Integer.parseInt(stock.getText().toString());
+                if (iStock>1){
+                    iStock--;
+                    stock.setText(""+iStock);
+                }
+            }
+        });
+        scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+                Log.d(TAG,"i1: "+i1);
+            }
+        });
         addReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,27 +207,8 @@ public class ProductDetail extends Fragment {
 
 
         dataHolder = new ArrayList<>();
-        setCategoryRecyclerView();
         getReview();
         return root;
-    }
-
-    private void setCategoryRecyclerView(){
-        categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        categoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        db.collection("Category").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()){
-                    for (QueryDocumentSnapshot document : task.getResult()){
-                        StoreTopView view = new StoreTopView(document.get("name").toString(),3);
-                        dataHolder.add(view);
-                    }
-                    storeTopAdapter = new StoreTopRecyclerView(dataHolder,getContext());
-                    categoryRecyclerView.setAdapter(storeTopAdapter);
-                }
-            }
-        });
     }
     private void setAlert(){
         dialog.show();
@@ -284,9 +330,6 @@ public class ProductDetail extends Fragment {
         }
     }
     private void getReview(){
-
-        userReview.setLayoutManager(new LinearLayoutManager(getContext()));
-        userReview.setItemAnimator(new DefaultItemAnimator());
         db.collection("Review").whereEqualTo("ProductId",productId).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -295,6 +338,7 @@ public class ProductDetail extends Fragment {
                         for (QueryDocumentSnapshot document : task.getResult()){
                             Review review = new Review(document.get("CustomerId").toString(), document.get("ProductId").toString(),document.get("Description").toString(),Integer.parseInt(document.get("Star").toString()),document.getDate("Time"));
                             reviewList.add(review);
+                            reviewAdapter.notifyDataSetChanged();
                             if (Integer.parseInt(document.get("Star").toString()) == 5){
                                 star5Count++;
                             }if (Integer.parseInt(document.get("Star").toString()) == 4){
@@ -347,10 +391,7 @@ public class ProductDetail extends Fragment {
                             star04.setImageResource(R.drawable.star);
                             star05.setImageResource(R.drawable.star);
                         }
-                        reviewAdapter = new ReviewRecyclerView(reviewList,getContext());
-                        userReview.setAdapter(reviewAdapter);
                     }else {
-
                     }
                 }
             }

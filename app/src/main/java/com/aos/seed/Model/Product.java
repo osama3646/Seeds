@@ -17,17 +17,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Product {
-    String productId, name, description, category, storeId;
-    ArrayList<String> image = new ArrayList<>();
+    String productId, name, description, storeId, size, humidity, light, temperature;
+    ArrayList<String> image = new ArrayList<>(), category = new ArrayList<>();
     float price;
     int stock;
 
-    public Product(String name, String description, float price, int stock, String category) {
+    public Product(String name, String description, float price, int stock) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.stock = stock;
-        this.category = category;
     }
 
     public void addProduct(){
@@ -40,6 +39,10 @@ public class Product {
         item.put("storeId",storeId);
         item.put("price",price);
         item.put("stock",stock);
+        item.put("size",size);
+        item.put("humidity",humidity);
+        item.put("light",light);
+        item.put("temperature",temperature);
         db.collection("Products").add(item);
     }
 
@@ -63,7 +66,7 @@ public class Product {
         return stock;
     }
 
-    public String getCategory() {
+    public ArrayList<String> getCategory() {
         return category;
     }
 
@@ -77,6 +80,42 @@ public class Product {
 
     public void setImage(ArrayList<String> image) {
         this.image = image;
+    }
+
+    public void setCategory(ArrayList<String> category) {
+        this.category = category;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
+    }
+
+    public String getLight() {
+        return light;
+    }
+
+    public void setLight(String light) {
+        this.light = light;
+    }
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
     }
 
     public void setStoreId(String storeId) {

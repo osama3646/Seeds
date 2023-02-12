@@ -15,18 +15,24 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.aos.seed.Adapter.StoreTopRecyclerView;
 import com.aos.seed.Model.Product;
+import com.aos.seed.Model.StoreTopView;
 import com.aos.seed.R;
 import com.aos.seed.databinding.FragmentAddProductBinding;
 import com.denzcoskun.imageslider.ImageSlider;
@@ -41,6 +47,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -57,16 +65,19 @@ import java.util.List;
 
 public class AddProduct extends Fragment {
 
-    String name, description, price, stock, category,image[];
+    String name, description, price, stock, category, size, humidity, light, temperature,image[];
     Button save;
     ImageSlider addImage;
     FirebaseFirestore db;
     FragmentAddProductBinding binding;
     View imageSelecter;
     AlertDialog dialog;
+    StoreTopRecyclerView storeTopAdapter;
+    List<StoreTopView> dataHolder = new ArrayList<>();
     ArrayList<StorageReference> referencesList;
     ArrayList<SlideModel> models = new ArrayList<>();
-    ArrayList<String> imageUrl = new ArrayList<>();
+    ArrayList<String> imageUrl = new ArrayList<>(), categoryList = new ArrayList<>(), getCategoryList = new ArrayList<>();;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -74,6 +85,9 @@ public class AddProduct extends Fragment {
         imageSelecter = getLayoutInflater().inflate(R.layout.image_selecter,null);
         db = FirebaseFirestore.getInstance();
         referencesList = new ArrayList<>();
+
+        binding.categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        binding.categoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
         setAlertDialog();
 
         binding.addImage.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +103,41 @@ public class AddProduct extends Fragment {
             }
         });
 
+        db.collection("Category").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()){
+                    for (QueryDocumentSnapshot document : task.getResult()){
+                        categoryList.add(document.get("name").toString());
+                    }
+                }
+            }
+        });
 
+        storeTopAdapter = new StoreTopRecyclerView(dataHolder,getContext());
+        binding.categoryRecyclerView.setAdapter(storeTopAdapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),R.layout.dropdown_item,categoryList);
+        ArrayAdapter<CharSequence> sizeAdapter = ArrayAdapter.createFromResource(getContext(),R.array.plant_size_array,R.layout.dropdown_item);
+        ArrayAdapter<CharSequence> lightAdapter = ArrayAdapter.createFromResource(getContext(),R.array.plant_light_array,R.layout.dropdown_item);
+        binding.category.setAdapter(adapter);
+        binding.plantSize.setAdapter(sizeAdapter);
+        binding.plantLight.setAdapter(lightAdapter);
+        binding.category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                StoreTopView view1 = new StoreTopView(categoryList.get(i),3);
+                if (getCategoryList.contains(categoryList.get(i))){
+                    storeTopAdapter.notifyItemRemoved(getCategoryList.indexOf(categoryList.get(i)));
+                    dataHolder.remove(getCategoryList.indexOf(categoryList.get(i)));
+                    getCategoryList.remove(categoryList.get(i));
+                }else {
+                    dataHolder.add(view1);
+                    getCategoryList.add(categoryList.get(i));
+                    storeTopAdapter.notifyDataSetChanged();
+                }
+                binding.category.setText("");
+            }
+        });
         LinearLayout camera = imageSelecter.findViewById(R.id.camera);
         LinearLayout gallery = imageSelecter.findViewById(R.id.gallery);
         camera.setOnClickListener(new View.OnClickListener() {
@@ -153,6 +201,7 @@ public class AddProduct extends Fragment {
                 imageUrl.add(uri.toString());
                 models.add(new SlideModel(uri.toString(),ScaleTypes.CENTER_CROP));
                 binding.imageSlider.setImageList(models);
+                binding.imageSlider.setVisibility(View.VISIBLE);
             }
         });
     }
@@ -165,9 +214,19 @@ public class AddProduct extends Fragment {
         price = binding.price.getText().toString();
         stock = binding.stock.getText().toString();
         category = binding.category.getText().toString();
+        size = binding.plantSize.getText().toString();
+        humidity = binding.plantHumidity.getText().toString()+"%";
+        light = binding.plantLight.getText().toString();
+        temperature = binding.plantTemperatureFrom.getText().toString()+" - "+binding.plantTemperatureTo.getText().toString()+"c";
 
-        Product product = new Product(name, description, Float.parseFloat(price), Integer.parseInt(stock), category);
+
+        Product product = new Product(name, description, Float.parseFloat(price), Integer.parseInt(stock));
+        product.setCategory(getCategoryList);
         product.setImage(imageUrl);
+        product.setSize(size);
+        product.setHumidity(humidity);
+        product.setLight(light);
+        product.setTemperature(temperature);
         product.addProduct();
         referencesList.clear();
         getFragmentManager().beginTransaction().replace(R.id.frameLayout,new Account()).commit();

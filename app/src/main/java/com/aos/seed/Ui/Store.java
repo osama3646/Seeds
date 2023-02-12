@@ -158,8 +158,7 @@ public class Store extends Fragment {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot document : task.getResult()){
                         Product product = new Product(document.get("name").toString(),document.get("description").toString(),
-                                Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()),
-                                document.get("category").toString());
+                                Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()));
                         product.setProductId(document.getId());
                         dataHolder.add(product);
                     }
@@ -179,8 +178,7 @@ public class Store extends Fragment {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot document : task.getResult()){
                         Product product = new Product(document.get("name").toString(),document.get("description").toString(),
-                                Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()),
-                                document.get("category").toString());
+                                Float.parseFloat(document.get("price").toString()),Integer.parseInt(document.get("stock").toString()));
                         ArrayList<String> image = (ArrayList<String>) document.get("image");
                         product.setImage(image);
                         product.setProductId(document.getId());

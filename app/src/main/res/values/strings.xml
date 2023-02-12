@@ -75,4 +75,21 @@
     <string name="required">Required</string>
     <string name="review">" Reviews"</string>
     <string name="there_is_no_review">There is no review</string>
+    <string name="plant_size">Plant size</string>
+    <string name="plant_humidity">Plant humidity</string>
+    <string name="plant_light">Plant light</string>
+    <string name="plant_temperature">Plant temperature</string>
+    <string name="to">To</string>
+    <string name="from">From</string>
+    <string-array name="plant_size_array">
+        <item>Very large</item>
+        <item>Large</item>
+        <item>Medium</item>
+        <item>Small</item>
+        <item>Very small</item>
+    </string-array>
+    <string-array name="plant_light_array">
+        <item>Diffuse</item>
+        <item>Not Diffuse</item>
+    </string-array>
 </resources>
