@@ -93,4 +93,12 @@
         <item>منتشر</item>
         <item>غير منتشر</item>
     </string-array>
+    <string name="likes">المفضلة</string>
+    <string name="the_product_has_been_added_to_the_cart">تمت إضافة هذا المنتج الى العربة</string>
+    <string name="Continue_shopping">متابعة التسوق</string>
+    <string name="follow_up_on_the_purchase">متابعة الشراء</string>
+    <string name="add_to_cart">إضافة الى السلة</string>
+    <string name="country">الدولة</string>
+    <string name="administrative_region">المنطقة الإدارية</string>
+    <string name="residential_quarter">"الحي السكني "</string>
 </resources>

@@ -17,6 +17,13 @@
             android:layout_margin="20dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:drawableStart="@drawable/ic_back" />
+
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
@@ -30,6 +37,7 @@
                 android:id="@+id/addImage"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="@string/add_image"/>
 
             <Space
@@ -37,6 +45,7 @@
                 android:layout_height="20dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/secondaryText"
@@ -57,6 +66,7 @@
                 android:layout_height="20dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/secondaryText"
@@ -77,6 +87,7 @@
                 android:layout_height="20dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/secondaryText"
@@ -97,6 +108,7 @@
                 android:layout_height="20dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/secondaryText"
@@ -138,6 +150,7 @@
                 android:layout_height="20dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/secondaryText"
@@ -197,6 +210,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/secondaryText"
@@ -214,6 +228,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/secondaryText"
@@ -238,6 +253,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categoryRecyclerView"
+                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
