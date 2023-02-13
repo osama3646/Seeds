@@ -28,6 +28,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aos.seed.Adapter.StoreTopRecyclerView;
@@ -66,6 +67,7 @@ import java.util.List;
 public class AddProduct extends Fragment {
 
     String name, description, price, stock, category, size, humidity, light, temperature,image[];
+
     Button save;
     ImageSlider addImage;
     FirebaseFirestore db;
@@ -76,7 +78,7 @@ public class AddProduct extends Fragment {
     List<StoreTopView> dataHolder = new ArrayList<>();
     ArrayList<StorageReference> referencesList;
     ArrayList<SlideModel> models = new ArrayList<>();
-    ArrayList<String> imageUrl = new ArrayList<>(), categoryList = new ArrayList<>(), getCategoryList = new ArrayList<>();;
+    ArrayList<String> imageUrl = new ArrayList<>(), categoryList = new ArrayList<>(), getCategoryList = new ArrayList<>();
 
 
     @Override
@@ -86,6 +88,14 @@ public class AddProduct extends Fragment {
         db = FirebaseFirestore.getInstance();
         referencesList = new ArrayList<>();
 
+
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Account()).commit();
+
+            }
+        });
         binding.categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         binding.categoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
         setAlertDialog();

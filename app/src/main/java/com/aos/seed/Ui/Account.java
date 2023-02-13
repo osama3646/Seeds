@@ -35,12 +35,7 @@ public class Account extends Fragment {
         LanguagecText = binding.Language.getText().toString().trim();
 
 
-        binding.productDetail1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new ProductDetail()).commit();
-            }
-        });
+
         binding.addProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

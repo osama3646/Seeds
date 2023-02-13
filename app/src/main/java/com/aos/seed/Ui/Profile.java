@@ -43,6 +43,13 @@ public class Profile extends Fragment {
         auth = FirebaseAuth.getInstance();
         mDb = FirebaseFirestore.getInstance();
         uid = auth.getCurrentUser().getUid();
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new Account()).commit();
+
+            }
+        });
 
 
          mDb.collection("Customer").document(uid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
