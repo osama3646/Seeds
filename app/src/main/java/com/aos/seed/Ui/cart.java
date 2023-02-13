@@ -68,6 +68,12 @@ public class cart extends Fragment {
             }
         });
 
+        binding.pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new payment()).addToBackStack(null).commit();
+            }
+        });
 
 
         db.collection("Cart").whereEqualTo("customerId", FirebaseAuth.getInstance().getCurrentUser().getUid()).addSnapshotListener(new EventListener<QuerySnapshot>() {

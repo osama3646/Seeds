@@ -32,9 +32,9 @@
     <string name="camera">الكامرة</string>
     <string name="gallery">المعرض</string>
     <string name="add_image">إضافة صورة</string>
-    <string name="region">البلد:</string>
+    <string name="region">المنطقة:</string>
     <string name="city">المدينه:</string>
-    <string name="district">منطقة:</string>
+    <string name="district">الحي:</string>
     <string name="Profile">الملف الشخصي</string>
     <string name="language">English</string>
     <string name="TermsAndConditions">الأحكام والشروط</string>
@@ -102,4 +102,5 @@
     <string name="country">الدولة</string>
     <string name="administrative_region">المنطقة الإدارية</string>
     <string name="residential_quarter">"الحي السكني "</string>
+    <string name="address_name">اسم العنوان</string>
 </resources>

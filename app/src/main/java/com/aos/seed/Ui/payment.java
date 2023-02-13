@@ -1,66 +1,229 @@
 package com.aos.seed.Ui;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.aos.seed.Adapter.CardRecycler;
+import com.aos.seed.Adapter.PaymentRecycler;
+import com.aos.seed.Model.Address;
+import com.aos.seed.Model.CreditCard;
 import com.aos.seed.R;
+import com.aos.seed.databinding.FragmentPaymentBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link payment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class payment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    FragmentPaymentBinding binding;
+    LinearLayout addAddress, addCard;
+    ImageView add, card;
+    Button saveAddress;
+    TextView saveCard;
+    EditText addressName, region, city, district, number, name, date;
+    RecyclerView itemRecyclerView;
+    PaymentRecycler paymentAdapter;
+    CardRecycler cardAdapter;
+    List<CreditCard> dataHolderCard = new ArrayList<>();
+    List<Address> dataHolder = new ArrayList<>();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public payment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment payment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static payment newInstance(String param1, String param2) {
-        payment fragment = new payment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = FragmentPaymentBinding.inflate(inflater,container,false);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_payment, container, false);
+        binding.editAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDialog();
+            }
+        });
+        binding.editCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDialogCard();
+            }
+        });
+
+        db.collection("Card").whereEqualTo("defaultCard",1).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (!value.isEmpty()){
+                    for (QueryDocumentSnapshot snapshot : value){
+                        binding.number.setText(snapshot.get("number").toString());
+                        binding.name.setText(snapshot.get("name").toString());
+                        binding.date.setText(snapshot.get("date").toString());
+                    }
+                }
+            }
+        });
+        db.collection("Address").whereEqualTo("defaultAddress",1).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (!value.isEmpty()){
+                    for (QueryDocumentSnapshot snapshot : value){
+                        binding.addressName.setText(snapshot.get("name").toString());
+                        binding.region.setText(snapshot.get("region").toString());
+                        binding.city.setText(snapshot.get("city").toString());
+                        binding.district.setText(snapshot.get("district").toString());
+                    }
+                }
+            }
+        });
+        binding.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.frameLayout, new cart()).commit();
+            }
+        });
+
+        return binding.getRoot();
+    }
+    public void setDialogCard(){
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.credit_card);
+
+        card = dialog.findViewById(R.id.add);
+        addCard = dialog.findViewById(R.id.addCard);
+        saveCard = dialog.findViewById(R.id.saveCard);
+        number = dialog.findViewById(R.id.number);
+        name = dialog.findViewById(R.id.name);
+        date = dialog.findViewById(R.id.date);
+        itemRecyclerView = dialog.findViewById(R.id.ItemRecyclerView);
+
+        itemRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        itemRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        cardAdapter = new CardRecycler(getContext(), dataHolderCard);
+        itemRecyclerView.setAdapter(cardAdapter);
+
+        db.collection("Card").whereEqualTo("customerId", FirebaseAuth.getInstance().getCurrentUser().getUid()).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (!value.isEmpty()){
+                    dataHolderCard.clear();
+                    for (QueryDocumentSnapshot document : value){
+                        CreditCard card = new CreditCard(document.get("number").toString(), document.get("date").toString(), document.get("name").toString());
+                        card.setDefaultCard(Integer.parseInt(document.get("defaultCard").toString()));
+                        card.setCardId(document.getId());
+                        dataHolderCard.add(card);
+                        cardAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
+
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addCard.setVisibility(View.VISIBLE);
+            }
+        });
+        saveCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addCard.setVisibility(View.GONE);
+                CreditCard card = new CreditCard(number.getText().toString(), date.getText().toString(), name.getText().toString());
+                card.setCard();
+                number.setText("");
+                name.setText("");
+                date.setText("");
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+    public void setDialog(){
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.address);
+
+        addAddress = dialog.findViewById(R.id.addAddress);
+        add = dialog.findViewById(R.id.add);
+        saveAddress = dialog.findViewById(R.id.saveAddress);
+        addressName = dialog.findViewById(R.id.addressName);
+        region = dialog.findViewById(R.id.region);
+        city = dialog.findViewById(R.id.city);
+        district = dialog.findViewById(R.id.district);
+        itemRecyclerView = dialog.findViewById(R.id.ItemRecyclerView);
+
+        itemRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        itemRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        paymentAdapter = new PaymentRecycler(getContext(),dataHolder);
+        itemRecyclerView.setAdapter(paymentAdapter);
+
+        db.collection("Address").whereEqualTo("customerId", FirebaseAuth.getInstance().getCurrentUser().getUid()).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (!value.isEmpty()){
+                    dataHolder.clear();
+                    for (QueryDocumentSnapshot document : value){
+                        Address address = new Address(document.get("name").toString(), document.get("region").toString(), document.get("city").toString(), document.get("district").toString());
+                        address.setDefaultAddress(Integer.parseInt(document.get("defaultAddress").toString()));
+                        address.setAddressId(document.getId());
+                        dataHolder.add(address);
+                        paymentAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addAddress.setVisibility(View.VISIBLE);
+            }
+        });
+        saveAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addAddress.setVisibility(View.GONE);
+                Address address = new Address(addressName.getText().toString(), region.getText().toString(), city.getText().toString(), district.getText().toString());
+                address.setAddress();
+                addressName.setText("");
+                region.setText("");
+                city.setText("");
+                district.setText("");
+            }
+        });
+
+
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
 }

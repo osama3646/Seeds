@@ -101,4 +101,10 @@
     <string name="country">Country</string>
     <string name="administrative_region">Administrative region</string>
     <string name="residential_quarter">Residential quarter</string>
+    <string name="address_name">Address Name</string>
+    <string name="card_name">Card Name</string>
+    <string name="card_date">00/00</string>
+    <string name="payment">Payment</string>
+    <string name="pay">Pay</string>
+    <string name="add_address">Add Address</string>
 </resources>

@@ -1,149 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="wrap_content"
+    android:id="@+id/border"
+    android:padding="16dp"
+    android:layout_marginBottom="30dp"
+    android:background="@drawable/border"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="139dp"
-        android:background="@drawable/border_green"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_margin="5dp"
-        >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <ImageView
+            android:id="@+id/addressIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/address_greay"/>
+        
+        <TextView
+            android:id="@+id/addressName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address Name"
+            android:textStyle="bold"
+            android:textSize="@dimen/TextTitle"
+            android:textColor="@color/primaryText"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"/>
+        
+        <ImageView
+            android:id="@+id/checked"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:visibility="invisible"
+            android:src="@drawable/check"/>
+        
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_loc"
-                />
+            android:orientation="vertical"
+            android:paddingStart="12dp"
+            android:layout_marginTop="16dp">
 
             <TextView
-                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Address Name"
-                android:textStyle="bold"
-                android:textSize="@dimen/TextTitle"
-                android:textColor="@color/primary"
-                android:layout_marginStart="16dp"
-                />
+                android:text="@string/region"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/text13"/>
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_done" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/city"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/text13"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/district"
+                android:textColor="@color/primaryText"
+                android:textSize="@dimen/text13"/>
+
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="bottom|end"
-            >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="12dp"
+            android:layout_marginTop="16dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp">
+            <TextView
+                android:id="@+id/region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jazan"
+                android:textColor="@color/secondaryText"
+                android:textSize="@dimen/text13"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sabya"
+                android:textColor="@color/secondaryText"
+                android:textSize="@dimen/text13"/>
 
-                    <TextView
-                        android:id="@+id/region"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:text="@string/region"
-                        android:textColor="#444444"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/city"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:text="@string/city"
-                        android:textColor="#444444"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/district"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:text="@string/district"
-                        android:textColor="#444444"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginStart="13dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:text="Jazan"
-                        android:textSize="14dp"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:text="Sabya"
-                        android:textSize="14dp"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="start"
-                        android:text="Khalidiya"
-                        android:textSize="14dp"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="24dp"
-                android:src="@drawable/edit"
-                />
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="24dp"
-            android:src="@drawable/delete"
-            android:layout_marginStart="16dp"
-            />
+            <TextView
+                android:id="@+id/district"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Khalidiya"
+                android:textColor="@color/secondaryText"
+                android:textSize="@dimen/text13"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom|end"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/edit"/>
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/delete"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

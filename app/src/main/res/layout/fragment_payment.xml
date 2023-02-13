@@ -3,123 +3,255 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Ui.payment"
     android:orientation="vertical"
-    android:layout_margin="16dp"
-    >
-    <TextView
-        android:drawableStart="@drawable/ic_back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+    android:layout_margin="16dp">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_round_arrow_back_ios_24"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Payment"
+        android:text="@string/payment"
         android:textSize="@dimen/TextTitle"
         android:textStyle="bold"
-        android:textColor="@color/primary"
-        />
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/primaryText"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Name Card"
-        app:endIconMode="clear_text"
-        app:hintTextColor="@color/primary"
-        app:startIconDrawable="@drawable/ic_baseline_person"
-        app:helperText="Required*"
-        app:helperTextTextColor="@color/ErrorColor"
-        >
-        <com.google.android.material.textfield.TextInputEditText
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="25" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Number Card"
-        app:endIconMode="clear_text"
-        app:hintTextColor="@color/primary"
-        app:startIconDrawable="@drawable/ic_credit_card_"
-        app:helperText="Required*"
-        app:counterEnabled="true"
-        app:counterMaxLength="16"
-        app:helperTextTextColor="@color/ErrorColor">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLength="16"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        >
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:hint="MM / YY"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:hintTextColor="@color/primary"
-            app:startIconDrawable="@drawable/ic_calendar"
-            app:helperText="Required*"
-            app:helperTextTextColor="@color/ErrorColor">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:hint="CVV"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:endIconMode="clear_text"
-            app:hintTextColor="@color/primary"
-            app:startIconDrawable="@drawable/ic_credit_card_"
-            app:helperText="Required*"
-            app:counterEnabled="true"
-            app:counterMaxLength="3"
-            app:helperTextTextColor="@color/ErrorColor">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="3" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:id="@+id/border"
+                android:padding="16dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/border1"
+                android:orientation="vertical">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="100dp"
-        android:text="Pay"
-        android:textSize="@dimen/text"
-        app:cornerRadius="10dp"
-        android:layout_gravity="center"
-        />
+                    <ImageView
+                        android:id="@+id/addressIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/address"/>
+
+                    <TextView
+                        android:id="@+id/addressName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="address Name"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/TextTitle"
+                        android:textColor="@color/primaryText"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:id="@+id/checked"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/check"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="12dp"
+                        android:layout_marginTop="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/region"
+                            android:textColor="@color/primaryText"
+                            android:textSize="@dimen/text13"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/city"
+                            android:textColor="@color/primaryText"
+                            android:textSize="@dimen/text13"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/district"
+                            android:textColor="@color/primaryText"
+                            android:textSize="@dimen/text13"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="12dp"
+                        android:layout_marginTop="16dp">
+
+                        <TextView
+                            android:id="@+id/region"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jazan"
+                            android:textColor="@color/secondaryText"
+                            android:textSize="@dimen/text13"/>
+
+                        <TextView
+                            android:id="@+id/city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sabya"
+                            android:textColor="@color/secondaryText"
+                            android:textSize="@dimen/text13"/>
+
+                        <TextView
+                            android:id="@+id/district"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Khalidiya"
+                            android:textColor="@color/secondaryText"
+                            android:textSize="@dimen/text13"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom|end"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/editAddress"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/edit"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/creditCard"
+                android:background="@drawable/cresit_card_bg1"
+                android:padding="20dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/editCard"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/edit"/>
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/visa"
+                        android:layout_gravity="end"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/chip"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:id="@+id/number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="XXXX XXXX XXXX XXXX"
+                    android:textSize="@dimen/TextTitle"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.2"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/TextTitle"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="00/00"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/TextTitle"
+                        android:textColor="@color/white"
+                        android:gravity="end"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/pay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="100dp"
+                android:text="@string/pay"
+                android:textSize="@dimen/text"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>

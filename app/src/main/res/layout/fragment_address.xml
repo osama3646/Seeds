@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingTop="50dp"
     android:paddingStart="20dp"
     android:paddingEnd="20dp"
-    android:background="@drawable/white_recatangel_background">
+    android:background="@drawable/white_recatangel_background"
+    tools:context=".Ui.Address">
 
     <ImageView
         android:id="@+id/add"
@@ -130,7 +133,6 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/saveAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/Save"
@@ -139,7 +141,6 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ItemRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"/>
