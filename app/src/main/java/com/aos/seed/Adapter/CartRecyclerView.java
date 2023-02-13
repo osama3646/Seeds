@@ -71,8 +71,6 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyVi
                                     for (QueryDocumentSnapshot snapshot : task.getResult()){
                                         product.setQuantity(product.getQuantity()+1);
                                         db.collection("Cart").document(snapshot.getId()).update("quantity",product.getQuantity());
-                                        holder.price.setText(df.format(product.getPrice()*product.getQuantity()));
-                                        holder.stock.setText(product.getQuantity()+"");
                                     }
                                 }
                             });
@@ -92,8 +90,6 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyVi
                                     for (QueryDocumentSnapshot snapshot : task.getResult()){
                                         product.setQuantity(product.getQuantity()-1);
                                         db.collection("Cart").document(snapshot.getId()).update("quantity",product.getQuantity());
-                                        holder.price.setText(df.format(product.getPrice()*product.getQuantity()));
-                                        holder.stock.setText(product.getQuantity()+"");
                                     }
                                 }
                             });
