@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.aos.seed.R;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     ChipNavigationBar chip_bottom_nav;
     private FirebaseAuth mAuth;
+    SharedPreferences sharedPref;
 
 
     @Override
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
     }
 
 
@@ -53,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
         chip_bottom_nav = findViewById(R.id.chip_bottom_nav);
         navSelected();
+
+//       sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//        Account account = new Account();
+//        account.setLanguage(sharedPref.getString("languageCode","ar"));
     }
 
 private void navSelected(){
