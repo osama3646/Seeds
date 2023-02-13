@@ -57,6 +57,11 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyVi
         holder.productName.setText(product.getName());
         holder.price.setText(df.format(product.getPrice()*product.getQuantity()));
         holder.stock.setText(product.getQuantity()+"");
+        if (product.getQuantity() == 1){
+            holder.minus1.setImageResource(R.drawable.delete);
+        }else {
+            holder.minus1.setImageResource(R.drawable.minus);
+        }
 
         holder.plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +76,11 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyVi
                                     for (QueryDocumentSnapshot snapshot : task.getResult()){
                                         product.setQuantity(product.getQuantity()+1);
                                         db.collection("Cart").document(snapshot.getId()).update("quantity",product.getQuantity());
+                                        if (product.getQuantity() == 1){
+                                            holder.minus1.setImageResource(R.drawable.delete);
+                                        }else {
+                                            holder.minus1.setImageResource(R.drawable.minus);
+                                        }
                                     }
                                 }
                             });
@@ -90,6 +100,24 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyVi
                                     for (QueryDocumentSnapshot snapshot : task.getResult()){
                                         product.setQuantity(product.getQuantity()-1);
                                         db.collection("Cart").document(snapshot.getId()).update("quantity",product.getQuantity());
+                                        if (product.getQuantity() == 1){
+                                            holder.minus1.setImageResource(R.drawable.delete);
+                                        }else {
+                                            holder.minus1.setImageResource(R.drawable.minus);
+                                        }
+                                    }
+                                }
+                            });
+                }
+                else {
+                    db.collection("Cart")
+                            .whereEqualTo("customerId", FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .whereEqualTo("productId", product.getProductId())
+                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    for (QueryDocumentSnapshot snapshot : task.getResult()){
+                                        db.collection("Cart").document(snapshot.getId()).delete();
                                     }
                                 }
                             });
@@ -104,7 +132,7 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyVi
     }
 
     public static class MyViewHolder extends  RecyclerView.ViewHolder {
-        ImageView productImage;
+        ImageView productImage, minus1;
         TextView productName, price, stock;
         FrameLayout plus, minus;
         public MyViewHolder(@NonNull View itemView) {
@@ -116,6 +144,7 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyVi
             stock = itemView.findViewById(R.id.stock);
             plus = itemView.findViewById(R.id.plus);
             minus = itemView.findViewById(R.id.minus);
+            minus1 = itemView.findViewById(R.id.minus1);
         }
     }
 }

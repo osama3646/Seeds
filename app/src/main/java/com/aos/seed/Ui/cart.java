@@ -56,9 +56,9 @@ public class cart extends Fragment {
         binding.ItemRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.ItemRecyclerView.setItemAnimator(new DefaultItemAnimator());
         loading = new ProgressDialog(getContext());
+        loading.show();
         loading.setContentView(R.layout.loading);
         loading.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        loading.show();
         cartAdapter = new CartRecyclerView(getContext(), dataHolder);
         binding.ItemRecyclerView.setAdapter(cartAdapter);
         binding.back.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +110,11 @@ public class cart extends Fragment {
                             }
                         });
                     }
+                }
+                else {
+                    binding.ItemRecyclerView.setVisibility(View.GONE);
+                    binding.empty.setVisibility(View.VISIBLE);
+                    onDestroy();
                 }
             }
         });

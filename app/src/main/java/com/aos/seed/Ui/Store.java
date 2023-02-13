@@ -27,6 +27,9 @@ import com.aos.seed.Adapter.StoreTopRecyclerView;
 import com.aos.seed.Model.Product;
 import com.aos.seed.Model.StoreTopView;
 import com.aos.seed.R;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -54,6 +57,8 @@ public class Store extends Fragment {
     ImageView layoutState;
     ImageView CartNavigation;
     FirebaseFirestore db;
+    ArrayList<SlideModel> models = new ArrayList<>();
+    ImageSlider imageOffer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,6 +69,7 @@ public class Store extends Fragment {
         CartNavigation = root.findViewById(R.id.CartNavigation);
         storeRecyclerView = root.findViewById(R.id.storeRecyclerView);
         offerRecyclerView = root.findViewById(R.id.offer);
+        imageOffer = root.findViewById(R.id.imageOffer);
         categoryRecyclerView = root.findViewById(R.id.category);
         dataHolder = new ArrayList<>();
         categoryDataHolder = new ArrayList<>();
@@ -113,19 +119,15 @@ public class Store extends Fragment {
 
 
     private void offerRecycler(){
-        offerRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        offerRecyclerView.setItemAnimator(new DefaultItemAnimator());
         db.collection("Offer").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
                     for (QueryDocumentSnapshot document : task.getResult()){
-                        StoreTopView view = new StoreTopView(document.get("name").toString(),2);
-                        offerDataHolder.add(view);
+                        models.add(new SlideModel(document.get("name").toString(), ScaleTypes.CENTER_CROP));
                     }
                 }
-                storeTopAdapter = new StoreTopRecyclerView(offerDataHolder,getContext());
-                offerRecyclerView.setAdapter(storeTopAdapter);
+                imageOffer.setImageList(models);
             }
         });
     }

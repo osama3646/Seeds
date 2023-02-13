@@ -21,11 +21,12 @@
 
             <SearchView
                 android:id="@+id/simpleSearchView"
-                android:layout_width="273dp"
-                android:layout_height="35dp"
-                android:background="@drawable/border_green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_green_2"
                 android:iconifiedByDefault="false"
-                android:queryHint="@string/Search"></SearchView>
+                android:layout_weight="1"
+                android:queryHint="@string/Search"/>
 
             <ImageView
                 android:id="@+id/layoutState"
@@ -43,6 +44,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/img_1"
+                android:layout_marginEnd="8dp"
                 app:tint="@color/primary" />
 
         </LinearLayout>
@@ -66,11 +68,13 @@
                     android:textSize="@dimen/TextTitle"
                     android:textStyle="bold" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/offer"
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/imageOffer"
+                    app:iss_corner_radius="20"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp" />
+                    android:layout_height="150dp"
+                    android:layout_marginTop="30dp"
+                    app:iss_placeholder="@drawable/placeholder_image"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/category"
@@ -82,7 +86,8 @@
                     android:id="@+id/storeRecyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp" />
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="60dp"/>
             </LinearLayout>
         </ScrollView>
 

@@ -3,13 +3,16 @@ package com.aos.seed.Ui;
 import static android.content.ContentValues.TAG;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aos.seed.Adapter.ReviewRecyclerView;
 import com.aos.seed.Adapter.StoreTopRecyclerView;
+import com.aos.seed.Model.Cart;
 import com.aos.seed.Model.Product;
 import com.aos.seed.Model.Review;
 import com.aos.seed.Model.StoreTopView;
@@ -75,6 +79,7 @@ public class ProductDetail extends Fragment {
     ImageSlider imageSlider;
     Product product;
     ScrollView scrollView;
+    Button addToCart;
     TextView name, plantSize, plantHumidity, plantLight, plantTemperature, description, price, stock, cancelReview, saveReview, reviewCount, totalStar;
     AlertDialog dialog;
     ImageView plus, minus, star1, star2, star3, star4, star5,star01, star02, star03, star04, star05;
@@ -84,6 +89,7 @@ public class ProductDetail extends Fragment {
     LinearLayout starLayout;
     String productId;
     Date addedDate;
+    ProgressDialog loading;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     ArrayList<SlideModel> slideModel = new ArrayList<>();
@@ -94,6 +100,12 @@ public class ProductDetail extends Fragment {
         addReviewLayout = getLayoutInflater().inflate(R.layout.add_review, null);
         setStar();
 
+        loading = new ProgressDialog(getContext());
+        loading.show();
+        loading.setContentView(R.layout.loading);
+        loading.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        addToCart = root.findViewById(R.id.addToCart);
         categoryRecyclerView = root.findViewById(R.id.categoryRecyclerView);
         userReview = root.findViewById(R.id.userReview);
         addReview = root.findViewById(R.id.addReview);
@@ -121,6 +133,7 @@ public class ProductDetail extends Fragment {
         star03 = root.findViewById(R.id.star3);
         star04 = root.findViewById(R.id.star4);
         star05 = root.findViewById(R.id.star5);
+
         db = FirebaseFirestore.getInstance();
         reviewList = new ArrayList<>();
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -135,6 +148,13 @@ public class ProductDetail extends Fragment {
         reviewAdapter = new ReviewRecyclerView(reviewList,getContext());
         userReview.setAdapter(reviewAdapter);
 
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cart cart = new Cart(product.getProductId(), Integer.parseInt(stock.getText().toString()));
+                cart.addToDatabase();
+            }
+        });
 
         dialog = builder.create();
 
@@ -169,6 +189,7 @@ public class ProductDetail extends Fragment {
                 imageSlider.setImageList(slideModel,ScaleTypes.CENTER_CROP);
                 storeTopAdapter = new StoreTopRecyclerView(dataHolder,getContext());
                 categoryRecyclerView.setAdapter(storeTopAdapter);
+                onDestroy();
             }
         });
         plus.setOnClickListener(new View.OnClickListener() {
@@ -327,6 +348,7 @@ public class ProductDetail extends Fragment {
             starLayout.setBackground(null);
             starDescription.setText("");
             star = 0;
+            refresh();
         }
     }
     private void getReview(){
@@ -396,5 +418,20 @@ public class ProductDetail extends Fragment {
                 }
             }
         });
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (loading != null && loading.isShowing()) {
+            loading.dismiss();
+        }
+    }
+    private void refresh(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+            getFragmentManager().beginTransaction().detach(this).commitNow();
+            getFragmentManager().beginTransaction().attach(this).commitNow();
+        }else {
+            getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+        }
     }
 }

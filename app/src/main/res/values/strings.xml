@@ -107,4 +107,5 @@
     <string name="payment">Payment</string>
     <string name="pay">Pay</string>
     <string name="add_address">Add Address</string>
+    <string name="your_cart_is_empty">Your cart is empty</string>
 </resources>

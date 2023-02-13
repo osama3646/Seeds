@@ -269,15 +269,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:background="@drawable/pre_background"
-                    android:textColor="@color/white"
-                    android:text="@string/add_to_cart" />
                 <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -308,6 +299,16 @@
                 </LinearLayout>
 
             </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+            <Button
+                android:id="@+id/addToCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_to_cart"
+                android:textSize="@dimen/TextTitle"/>
 
             <Space
                 android:layout_width="match_parent"
