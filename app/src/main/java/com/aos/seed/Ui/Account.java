@@ -24,7 +24,7 @@ public class Account extends Fragment {
     FragmentAccountBinding binding;
     private String LanguagecText;
     private String LanguagecCod;
-    private SharedPreferences sharedPref;
+    SharedPreferences shared;
 
 
     @Override
@@ -102,14 +102,15 @@ public class Account extends Fragment {
         return binding.getRoot();
     }
     public void setLanguage(String languageCode) {
+//        shared = getContext().getSharedPreferences("language", Context.MODE_PRIVATE);
         Resources resources = this.getResources();
         Configuration configuration = resources.getConfiguration();
         Locale locale = new Locale(languageCode);
         Locale.setDefault(locale);
         configuration.setLocale(locale);
         resources.updateConfiguration(configuration,resources.getDisplayMetrics());
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//        editor.putString("languageCode",LanguagecCod.toString());
+//        SharedPreferences.Editor editor = shared.edit();
+//        editor.putString("languageCode",LanguagecCod);
 //        editor.commit();
     };
 }

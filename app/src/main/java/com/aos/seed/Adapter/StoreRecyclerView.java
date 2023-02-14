@@ -117,7 +117,7 @@ public class StoreRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
                         Bundle bundle = new Bundle();
                         bundle.putString("productId",product.getProductId());
                         detail.setArguments(bundle);
-                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.layout25,detail).commit();
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.layout25,detail).addToBackStack(null).commit();
                     }
                 });
                 model.addToCart.setOnClickListener(new View.OnClickListener() {

@@ -103,4 +103,10 @@
     <string name="administrative_region">المنطقة الإدارية</string>
     <string name="residential_quarter">"الحي السكني "</string>
     <string name="address_name">اسم العنوان</string>
+    <string name="card_name">الاسم على البطاقة</string>
+    <string name="card_date">00/00</string>
+    <string name="payment">الدفع</string>
+    <string name="pay">ادفع</string>
+    <string name="add_address">إضافة عنوان</string>
+    <string name="your_cart_is_empty">عربة التسوق فارغه</string>
 </resources>

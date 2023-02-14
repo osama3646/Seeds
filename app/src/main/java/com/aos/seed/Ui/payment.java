@@ -27,6 +27,7 @@ import com.aos.seed.Adapter.CardRecycler;
 import com.aos.seed.Adapter.PaymentRecycler;
 import com.aos.seed.Model.Address;
 import com.aos.seed.Model.CreditCard;
+import com.aos.seed.Model.Customer;
 import com.aos.seed.R;
 import com.aos.seed.databinding.FragmentPaymentBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,9 +45,9 @@ public class payment extends Fragment {
     FragmentPaymentBinding binding;
     LinearLayout addAddress, addCard;
     ImageView add, card;
-    Button saveAddress;
-    TextView saveCard;
-    EditText addressName, region, city, district, number, name, date;
+    Button saveAddress, signIn1, submit;
+    TextView saveCard, singUp, singIn;
+    EditText addressName, region, city, district, number, name, date, username, password, name1, email, password1, phone;
     RecyclerView itemRecyclerView;
     PaymentRecycler paymentAdapter;
     CardRecycler cardAdapter;
@@ -116,6 +117,27 @@ public class payment extends Fragment {
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.signin);
+        singUp = dialog.findViewById(R.id.newAccount);
+        username = dialog.findViewById(R.id.username);
+        password = dialog.findViewById(R.id.Password);
+        signIn1 = dialog.findViewById(R.id.signIn1);
+
+        signIn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Customer customer = new Customer(username.getText().toString(), password.getText().toString());
+                customer.signIn();
+                dialog.dismiss();
+            }
+        });
+
+        singUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                singUp();
+            }
+        });
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -127,6 +149,30 @@ public class payment extends Fragment {
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.singup);
+        singIn = dialog.findViewById(R.id.singIn);
+        submit = dialog.findViewById(R.id.submit);
+        name1 = dialog.findViewById(R.id.name);
+        email = dialog.findViewById(R.id.email);
+        password1 = dialog.findViewById(R.id.password);
+        phone = dialog.findViewById(R.id.phone);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Customer customer = new Customer(email.getText().toString(), password1.getText().toString());
+                customer.setName(name1.getText().toString());
+                customer.setPhone(phone.getText().toString());
+                customer.signUp();
+                dialog.dismiss();
+            }
+        });
+        singIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                singIn();
+            }
+        });
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
