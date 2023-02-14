@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp"
 
     >
 
@@ -12,8 +11,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:background="@drawable/white_recatangel_background"
-        android:paddingTop="16dp"
-        android:layout_marginBottom="30dp">
+        android:padding="16dp">
 
     <View
         android:layout_width="50dp"

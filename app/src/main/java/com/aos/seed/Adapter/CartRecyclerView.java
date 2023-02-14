@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aos.seed.Model.Product;
 import com.aos.seed.R;
 import com.aos.seed.Ui.cart;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +32,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyViewHolder> {
@@ -54,6 +58,11 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyVi
     public void onBindViewHolder(@NonNull CartRecyclerView.MyViewHolder holder, int position) {
 
         final Product product = itemArrayList.get(holder.getAdapterPosition());
+        ArrayList<SlideModel> models = new ArrayList<>();
+        for (int i=0;i<product.getImage().size();i++){
+            models.add(new SlideModel(product.getImage().get(i), ScaleTypes.CENTER_CROP));
+        }
+        holder.productImage.setImageList(models);
         holder.productName.setText(product.getName());
         holder.price.setText(df.format(product.getPrice()*product.getQuantity()));
         holder.stock.setText(product.getQuantity()+"");
@@ -132,7 +141,8 @@ public class CartRecyclerView extends RecyclerView.Adapter<CartRecyclerView.MyVi
     }
 
     public static class MyViewHolder extends  RecyclerView.ViewHolder {
-        ImageView productImage, minus1;
+        ImageSlider productImage;
+        ImageView minus1;
         TextView productName, price, stock;
         FrameLayout plus, minus;
         public MyViewHolder(@NonNull View itemView) {

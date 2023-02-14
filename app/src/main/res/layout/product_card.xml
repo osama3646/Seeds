@@ -12,12 +12,12 @@
         app:cardElevation="0dp"
         app:cardCornerRadius="10dp">
 
-        <ImageView
+        <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/productImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/placeholder_image"
-            android:scaleType="centerCrop"/>
+            app:iss_error_image="@drawable/placeholder_image"
+            app:iss_placeholder="@drawable/placeholder_image" />
 
     </androidx.cardview.widget.CardView>
 
